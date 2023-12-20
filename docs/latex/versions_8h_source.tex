@@ -1,0 +1,28 @@
+\doxysection{versions.\+h}
+\hypertarget{versions_8h_source}{}\label{versions_8h_source}\index{include/MPR/versions.h@{include/MPR/versions.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ VERSIONS\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ VERSIONS\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ GCWII\_VERSION\ "{}MPRender\ V1.0.0\ for\ GCWII"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ WIN\_VERSION\ "{}MPRender\ V1.0.0\ for\ Windows"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ LINUX\_VERSION\ "{}MPRender\ V1.0.0\ for\ Linux"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ MAC\_VERSION\ "{}MPRender\ V1.0.0\ for\ Mac"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ CURRENT\_VERSION\ WIN\_VERSION}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#elif\ defined(CC\_BUILD\_LINUX)}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ CURRENT\_VERSION\ LINUX\_VERSION}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#elif\ defined(CC\_BUILD\_MAC)}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ CURRENT\_VERSION\ MAC\_VERSION}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#elif\ defined(CC\_BUILD\_GCWII)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ CURRENT\_VERSION\ GCWII\_VERSION}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ CURRENT\_VERSION\ "{}MPRender\ V1.0.0\ for\ Unknown\ Platform"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

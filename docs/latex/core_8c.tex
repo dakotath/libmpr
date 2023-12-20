@@ -1,0 +1,1014 @@
+\doxysection{source/core.c File Reference}
+\hypertarget{core_8c}{}\label{core_8c}\index{source/core.c@{source/core.c}}
+{\ttfamily \#include $<$MPR/core.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/input.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/versions.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/memory.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/gifdec.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{core_8c_ac36e702ad9d1e5df85b01c075cc6ef62}\label{core_8c_ac36e702ad9d1e5df85b01c075cc6ef62} 
+void {\bfseries enter\+BACKUP} ()
+\begin{DoxyCompactList}\small\item\em Enter fallback console mode (works on wii). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_aaf30f1a427b8bffa96b66756e1af926b}{problem}} (\mbox{\hyperlink{struct_window}{Window}} win, char \texorpdfstring{$\ast$}{*}txt, bool exiter)
+\begin{DoxyCompactList}\small\item\em Displays an error message in a window and optionally exits the program. \end{DoxyCompactList}\item 
+\Hypertarget{core_8c_a2c4bc643e3b2ade601b41aafaefcd60e}\label{core_8c_a2c4bc643e3b2ade601b41aafaefcd60e} 
+void {\bfseries go3d\+Mode} (f32 min\+Distance, f32 max\+Distance, f32 fov, bool texture\+Mode)
+\item 
+\Hypertarget{core_8c_a17bfbb7a3bbac500e996badbf1dc2e66}\label{core_8c_a17bfbb7a3bbac500e996badbf1dc2e66} 
+void {\bfseries go2d\+Mode} ()
+\item 
+void \mbox{\hyperlink{core_8c_afa7519b4c6501ba46f7b62efa70329b3}{show\+Splash}} (\mbox{\hyperlink{struct_window}{Window}} win)
+\begin{DoxyCompactList}\small\item\em Shows the splash screen. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_window}{Window}} \mbox{\hyperlink{core_8c_a64ef044d74c439f2cf8f692d348dfe9d}{init}} ()
+\begin{DoxyCompactList}\small\item\em Startup the rendering engine. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_raw_data}{Raw\+Data}} \mbox{\hyperlink{core_8c_a6d38b69a69f8d4415a55f04afcc3d515}{load\+Raw\+Data}} (char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Load file into raw buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_thread}{Thread}} \mbox{\hyperlink{core_8c_a9753f754f640c8f65959a6ff3ec854a0}{create\+Thread}} (void \texorpdfstring{$\ast$}{*}func, void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Create a thread so you can cook while you cook. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_font}{Font}} \mbox{\hyperlink{core_8c_a254000923fedf29bf5ed677ce762f949}{init\+Font}} (char \texorpdfstring{$\ast$}{*}file, int size, \mbox{\hyperlink{struct_window}{Window}} win)
+\begin{DoxyCompactList}\small\item\em Init a True\+Type \doxylink{struct_font}{Font}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_text}{Text}} \mbox{\hyperlink{core_8c_a4646869806700de48a63cfa46794d0b0}{init\+Text}} (char \texorpdfstring{$\ast$}{*}str, int x, int y, int length, \mbox{\hyperlink{struct_color}{Color}} color, \mbox{\hyperlink{struct_font}{Font}} font)
+\begin{DoxyCompactList}\small\item\em Initializes a \doxylink{struct_text}{Text} structure with the specified parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_text}{Text}} \mbox{\hyperlink{core_8c_ae5933f5eb2c51b096bf77f6499f0330d}{re\+Pos\+Text}} (\mbox{\hyperlink{struct_text}{Text}} c\+Text, int x, int y)
+\begin{DoxyCompactList}\small\item\em Repositions a \doxylink{struct_text}{Text} structure to the specified coordinates. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_rect}{Rect}} \mbox{\hyperlink{core_8c_a3d8517c0511292474455e64999069923}{init\+Rect}} (int x, int y, int w, int h, \mbox{\hyperlink{struct_color}{Color}} color)
+\begin{DoxyCompactList}\small\item\em Initializes a \doxylink{struct_rect}{Rect} structure with the specified parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_rect}{Rect}} \mbox{\hyperlink{core_8c_ae24f77b948ad108d372950166577dc38}{re\+Pos\+Rect}} (\mbox{\hyperlink{struct_rect}{Rect}} c\+Rect, int x, int y, int w, int h)
+\begin{DoxyCompactList}\small\item\em Repositions a \doxylink{struct_rect}{Rect} structure to the specified coordinates and updates its size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_button}{Button}} \mbox{\hyperlink{core_8c_af343ed933810b47703ec99f8a88cbd0c}{create\+Button}} (int x, int y, int w, int h, char \texorpdfstring{$\ast$}{*}str, \mbox{\hyperlink{struct_color}{Color}} color, \mbox{\hyperlink{struct_color}{Color}} text\+Color, \mbox{\hyperlink{struct_font}{Font}} fnt, void \texorpdfstring{$\ast$}{*}click)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{struct_button}{Button} structure with the specified parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_button}{Button}} \mbox{\hyperlink{core_8c_a46e51a1a97133b622c519a2f2e4b9e6c}{re\+Pos\+Button}} (\mbox{\hyperlink{struct_button}{Button}} c\+Button, int x, int y, int w, int h)
+\begin{DoxyCompactList}\small\item\em Repositions a \doxylink{struct_button}{Button} structure to the specified coordinates and updates its size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_message_box_rend}{Message\+Box\+Rend}} \mbox{\hyperlink{core_8c_a363fc5faf02e44bd9b624715b8b123b1}{create\+Message\+Box}} (int x, int y, int w, int h, char \texorpdfstring{$\ast$}{*}title, char \texorpdfstring{$\ast$}{*}text, \mbox{\hyperlink{struct_color}{Color}} color, \mbox{\hyperlink{struct_color}{Color}} text\+Color, \mbox{\hyperlink{struct_font}{Font}} fnt, void \texorpdfstring{$\ast$}{*}click)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure with the specified parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_message_box_rend}{Message\+Box\+Rend}} \mbox{\hyperlink{core_8c_a052f06b968379e7018fb09a78e134717}{re\+Pos\+Message\+Box}} (\mbox{\hyperlink{struct_message_box_rend}{Message\+Box\+Rend}} cmb, int x, int y, int w, int h)
+\begin{DoxyCompactList}\small\item\em Repositions a \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure to the specified coordinates and updates its size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_texture}{Texture}} \mbox{\hyperlink{core_8c_a0d2b4d8e5e613807efc3811869710186}{init\+Texture}} (\mbox{\hyperlink{struct_window}{Window}} win, char \texorpdfstring{$\ast$}{*}file, int x, int y, int w, int h, float rotation, bool rotate\+ACent)
+\begin{DoxyCompactList}\small\item\em Initializes a \doxylink{struct_texture}{Texture} structure from an image file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_texture}{Texture}} \mbox{\hyperlink{core_8c_a561c06c78b85872932ef525c8e25cb55}{load\+Texture}} (\mbox{\hyperlink{struct_window}{Window}} win, unsigned char \texorpdfstring{$\ast$}{*}data, int size, int x, int y, int w, int h, float rotation, bool rotate\+ACent)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{struct_texture}{Texture} structure from image data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{core_8c_ad8e33b30bcd6e3776aaeddd98acdbd3b}{rect\+To\+Obj}} (\mbox{\hyperlink{struct_rect}{Rect}} rect)
+\begin{DoxyCompactList}\small\item\em Converts a \doxylink{struct_rect}{Rect} structure to an \doxylink{struct_object}{Object} structure. \end{DoxyCompactList}\item 
+u32 \mbox{\hyperlink{core_8c_a409d2755e7dd1297fdffcc7a08fc68aa}{Color\+To\+U32}} (\mbox{\hyperlink{struct_color}{Color}} color)
+\begin{DoxyCompactList}\small\item\em Converts a \doxylink{struct_color}{Color} structure to a 32-\/bit unsigned integer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_a52910aaed2b1ae865852cc90fa4b93ed}{render\+Texture}} (\mbox{\hyperlink{struct_texture}{Texture}} tex, \mbox{\hyperlink{struct_window}{Window}} win)
+\begin{DoxyCompactList}\small\item\em Renders a texture onto a window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_ac0d267fc6fbf8979c1512214c0168326}{render\+Text}} (\mbox{\hyperlink{struct_window}{Window}} window, \mbox{\hyperlink{struct_text}{Text}} text)
+\begin{DoxyCompactList}\small\item\em Renders text onto a window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_af1933685fa520954fb16f6272fbaef6f}{render\+Rect}} (\mbox{\hyperlink{struct_window}{Window}} window, \mbox{\hyperlink{struct_rect}{Rect}} rect)
+\begin{DoxyCompactList}\small\item\em Renders a rectangle onto a window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_a544acafb9d3b5ab6f6f55aa9394835ed}{render\+Button}} (\mbox{\hyperlink{struct_window}{Window}} window, \mbox{\hyperlink{struct_button}{Button}} button)
+\begin{DoxyCompactList}\small\item\em Renders a button onto a window. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_size}{Size}} \mbox{\hyperlink{core_8c_aca5519e5f3aa3f7ad92ae4815ea1b5b8}{get\+Text\+Width\+TTF}} (\mbox{\hyperlink{struct_font}{Font}} font, \mbox{\hyperlink{struct_text}{Text}} text)
+\begin{DoxyCompactList}\small\item\em Gets the width and height of the rendered text in pixels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_a2aabbada4fa10c695c9d4fdf3e54b490}{render\+MBox}} (\mbox{\hyperlink{struct_window}{Window}} window, \mbox{\hyperlink{struct_message_box_rend}{Message\+Box\+Rend}} msg\+Box, bool mouse\+Down, int mouseX, int mouseY)
+\begin{DoxyCompactList}\small\item\em Renders a message box on a window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_a913c690a548a3bde58d7061546355622}{simple\+Collision\+Detector}} (\mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}sprite1, \mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}sprite2, int \texorpdfstring{$\ast$}{*}x\+Hit, int \texorpdfstring{$\ast$}{*}y\+Hit)
+\begin{DoxyCompactList}\small\item\em Performs simple collision detection between two objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_a7476294c8c8e5c013b2d38b278c0cfc1}{collision\+Detector}} (\mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}obj1, \mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}obj2, int \texorpdfstring{$\ast$}{*}x\+Hit, int \texorpdfstring{$\ast$}{*}y\+Hit)
+\begin{DoxyCompactList}\small\item\em Performs collision detection between two objects. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{core_8c_a6c6f41d235efeb46f40a2650aed7a430}{collision\+Detector\+Bool}} (\mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}obj1, \mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}obj2)
+\begin{DoxyCompactList}\small\item\em Performs collision detection between two objects and returns a boolean result. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_ad3e7191f361e2feb6a4a235d2e305f89}{check\+Button\+Clicked}} (\mbox{\hyperlink{struct_button}{Button}} button, bool mouse\+Down, int mouse\+\_\+x, int mouse\+\_\+y, int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\begin{DoxyCompactList}\small\item\em Checks if a button is clicked and executes its associated function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_a3bd7fe87503874f23d5b9260eeaa0593}{clear\+Screen}} (\mbox{\hyperlink{struct_window}{Window}} window)
+\begin{DoxyCompactList}\small\item\em Clears the rendering screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_a3a307acc9dd50e7ade80f025f63dda1f}{fill\+Screen}} (\mbox{\hyperlink{struct_window}{Window}} win, \mbox{\hyperlink{struct_color}{Color}} color)
+\begin{DoxyCompactList}\small\item\em Fills the rendering screen with a specified color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_ad33f3c8c4e551a61d95cb53313f3c377}{set\+Render\+Color}} (\mbox{\hyperlink{struct_window}{Window}} window, \mbox{\hyperlink{struct_color}{Color}} color)
+\begin{DoxyCompactList}\small\item\em Sets the rendering color on the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_a6ff50275544a950c852f81399b0441d3}{update\+Window}} (\mbox{\hyperlink{struct_window}{Window}} win)
+\begin{DoxyCompactList}\small\item\em Updates the rendering window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_a80f9e08da412bdfae07aa09847d6de96}{render\+Mesh}} (\mbox{\hyperlink{struct_window}{Window}} win, \mbox{\hyperlink{struct_mesh}{Mesh}} mesh)
+\begin{DoxyCompactList}\small\item\em Renders a 3D mesh on the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_a88a547c96c9ce3906c0cf22bdf504084}{render\+Model}} (\mbox{\hyperlink{struct_window}{Window}} win, \mbox{\hyperlink{struct_model}{Model}} model)
+\begin{DoxyCompactList}\small\item\em Renders a 3D model on the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{core_8c_a7eeb95808eec2bc35ecadcde9884c3a2}{save\+Model}} (\mbox{\hyperlink{struct_model}{Model}} model, char \texorpdfstring{$\ast$}{*}file)
+\begin{DoxyCompactList}\small\item\em Saves a 3D model to a binary file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_model}{Model}} \mbox{\hyperlink{core_8c_af55e9ed2b0807c2ae9f7ab01f11744b3}{load\+Model}} (char \texorpdfstring{$\ast$}{*}file)
+\begin{DoxyCompactList}\small\item\em Loads a 3D model from a binary file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{core_8c_af5e9cbaf11bc8c0c330917f546d0045f}\label{core_8c_af5e9cbaf11bc8c0c330917f546d0045f} 
+\mbox{\hyperlink{struct_window}{Window}} {\bfseries win}
+\item 
+\Hypertarget{core_8c_a83f12e4e6f1f32b64e0d3c47e7439111}\label{core_8c_a83f12e4e6f1f32b64e0d3c47e7439111} 
+int {\bfseries curthread} =0
+\item 
+\Hypertarget{core_8c_a944e6043842b8ea8abbfd88a69c0c7e9}\label{core_8c_a944e6043842b8ea8abbfd88a69c0c7e9} 
+float {\bfseries angle2} = 0.\+0f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The meat and potatoes of MPRenderer. \begin{DoxyAuthor}{Author}
+Dakota Thorpe. 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/12-\/19 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{core_8c_ad3e7191f361e2feb6a4a235d2e305f89}\label{core_8c_ad3e7191f361e2feb6a4a235d2e305f89} 
+\index{core.c@{core.c}!checkButtonClicked@{checkButtonClicked}}
+\index{checkButtonClicked@{checkButtonClicked}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{checkButtonClicked()}{checkButtonClicked()}}
+{\footnotesize\ttfamily void check\+Button\+Clicked (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button}{Button}}}]{button,  }\item[{bool}]{mouse\+Down,  }\item[{int}]{mouse\+\_\+x,  }\item[{int}]{mouse\+\_\+y,  }\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+
+
+Checks if a button is clicked and executes its associated function. 
+
+This function checks if the specified button is clicked based on the mouse coordinates and mouse button state. If the button is clicked, it executes the associated function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & The \doxylink{struct_button}{Button} structure defining the button\textquotesingle{}s attributes. \\
+\hline
+{\em mouse\+Down} & Indicates whether the mouse button is down. \\
+\hline
+{\em mouse\+\_\+x} & The x-\/coordinate of the mouse cursor. \\
+\hline
+{\em mouse\+\_\+y} & The y-\/coordinate of the mouse cursor. \\
+\hline
+{\em argc} & The number of command line arguments. \\
+\hline
+{\em argv} & The array of command line arguments.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a3bd7fe87503874f23d5b9260eeaa0593}\label{core_8c_a3bd7fe87503874f23d5b9260eeaa0593} 
+\index{core.c@{core.c}!clearScreen@{clearScreen}}
+\index{clearScreen@{clearScreen}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{clearScreen()}{clearScreen()}}
+{\footnotesize\ttfamily void clear\+Screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{window }\end{DoxyParamCaption})}
+
+
+
+Clears the rendering screen. 
+
+This function clears the rendering screen on the specified window.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The \doxylink{struct_window}{Window} structure representing the rendering window.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a7476294c8c8e5c013b2d38b278c0cfc1}\label{core_8c_a7476294c8c8e5c013b2d38b278c0cfc1} 
+\index{core.c@{core.c}!collisionDetector@{collisionDetector}}
+\index{collisionDetector@{collisionDetector}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{collisionDetector()}{collisionDetector()}}
+{\footnotesize\ttfamily void collision\+Detector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}}]{obj1,  }\item[{\mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}}]{obj2,  }\item[{int \texorpdfstring{$\ast$}{*}}]{x\+Hit,  }\item[{int \texorpdfstring{$\ast$}{*}}]{y\+Hit }\end{DoxyParamCaption})}
+
+
+
+Performs collision detection between two objects. 
+
+This function checks whether two objects are colliding and sets the x\+Hit and y\+Hit variables accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj1} & The first \doxylink{struct_object}{Object}. \\
+\hline
+{\em obj2} & The second \doxylink{struct_object}{Object}. \\
+\hline
+{\em x\+Hit} & A pointer to the x-\/axis collision indicator. \\
+\hline
+{\em y\+Hit} & A pointer to the y-\/axis collision indicator.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a6c6f41d235efeb46f40a2650aed7a430}\label{core_8c_a6c6f41d235efeb46f40a2650aed7a430} 
+\index{core.c@{core.c}!collisionDetectorBool@{collisionDetectorBool}}
+\index{collisionDetectorBool@{collisionDetectorBool}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{collisionDetectorBool()}{collisionDetectorBool()}}
+{\footnotesize\ttfamily bool collision\+Detector\+Bool (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}}]{obj1,  }\item[{\mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}}]{obj2 }\end{DoxyParamCaption})}
+
+
+
+Performs collision detection between two objects and returns a boolean result. 
+
+This function checks whether two objects are colliding and returns a boolean result.
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj1} & The first \doxylink{struct_object}{Object}. \\
+\hline
+{\em obj2} & The second \doxylink{struct_object}{Object}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the objects are colliding, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a409d2755e7dd1297fdffcc7a08fc68aa}\label{core_8c_a409d2755e7dd1297fdffcc7a08fc68aa} 
+\index{core.c@{core.c}!ColorToU32@{ColorToU32}}
+\index{ColorToU32@{ColorToU32}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{ColorToU32()}{ColorToU32()}}
+{\footnotesize\ttfamily u32 Color\+To\+U32 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_color}{Color}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Converts a \doxylink{struct_color}{Color} structure to a 32-\/bit unsigned integer. 
+
+This function takes a \doxylink{struct_color}{Color} structure and converts it to a 32-\/bit unsigned integer, where each color component corresponds to a byte.
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The \doxylink{struct_color}{Color} structure to be converted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A 32-\/bit unsigned integer representing the \doxylink{struct_color}{Color}. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_af343ed933810b47703ec99f8a88cbd0c}\label{core_8c_af343ed933810b47703ec99f8a88cbd0c} 
+\index{core.c@{core.c}!createButton@{createButton}}
+\index{createButton@{createButton}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{createButton()}{createButton()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_button}{Button}} create\+Button (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{\mbox{\hyperlink{struct_color}{Color}}}]{color,  }\item[{\mbox{\hyperlink{struct_color}{Color}}}]{text\+Color,  }\item[{\mbox{\hyperlink{struct_font}{Font}}}]{fnt,  }\item[{void \texorpdfstring{$\ast$}{*}}]{click }\end{DoxyParamCaption})}
+
+
+
+Creates a \doxylink{struct_button}{Button} structure with the specified parameters. 
+
+This function initializes a \doxylink{struct_button}{Button} structure with the provided position, size, string, colors, font, and callback function for the button click. The resulting \doxylink{struct_button}{Button} structure can be used for interactive buttons.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the button. \\
+\hline
+{\em y} & The y-\/coordinate of the button. \\
+\hline
+{\em w} & The width of the button. \\
+\hline
+{\em h} & The height of the button. \\
+\hline
+{\em str} & The string to be displayed on the button. \\
+\hline
+{\em color} & The color of the button. \\
+\hline
+{\em text\+Color} & The color of the button text. \\
+\hline
+{\em fnt} & The font for the button text. \\
+\hline
+{\em click} & The callback function to be executed on button click.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_button}{Button} structure initialized with the specified parameters. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a363fc5faf02e44bd9b624715b8b123b1}\label{core_8c_a363fc5faf02e44bd9b624715b8b123b1} 
+\index{core.c@{core.c}!createMessageBox@{createMessageBox}}
+\index{createMessageBox@{createMessageBox}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{createMessageBox()}{createMessageBox()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_message_box_rend}{Message\+Box\+Rend}} create\+Message\+Box (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{char \texorpdfstring{$\ast$}{*}}]{title,  }\item[{char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{\mbox{\hyperlink{struct_color}{Color}}}]{color,  }\item[{\mbox{\hyperlink{struct_color}{Color}}}]{text\+Color,  }\item[{\mbox{\hyperlink{struct_font}{Font}}}]{fnt,  }\item[{void \texorpdfstring{$\ast$}{*}}]{click }\end{DoxyParamCaption})}
+
+
+
+Creates a \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure with the specified parameters. 
+
+This function initializes a \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure with the provided position, size, title, text, colors, font, and callback function for the button click. The resulting \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure can be used for displaying message boxes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the message box. \\
+\hline
+{\em y} & The y-\/coordinate of the message box. \\
+\hline
+{\em w} & The width of the message box. \\
+\hline
+{\em h} & The height of the message box. \\
+\hline
+{\em title} & The title text for the message box. \\
+\hline
+{\em text} & The main text content of the message box. \\
+\hline
+{\em color} & The color of the message box content. \\
+\hline
+{\em text\+Color} & The color of the message box text. \\
+\hline
+{\em fnt} & The font for the message box text. \\
+\hline
+{\em click} & The callback function to be executed on button click.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure initialized with the specified parameters. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a9753f754f640c8f65959a6ff3ec854a0}\label{core_8c_a9753f754f640c8f65959a6ff3ec854a0} 
+\index{core.c@{core.c}!createThread@{createThread}}
+\index{createThread@{createThread}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{createThread()}{createThread()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_thread}{Thread}} create\+Thread (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{func,  }\item[{void \texorpdfstring{$\ast$}{*}}]{arg }\end{DoxyParamCaption})}
+
+
+
+Create a thread so you can cook while you cook. 
+
+When you want to do some multithreading, create threads with this to do it. ~\newline
+ Don\textquotesingle{}t forget to wait() for at least 1ms within thread loops, or you could get a thread that does not allow for others to execute.
+
+
+\begin{DoxyParams}{Parameters}
+{\em func} & Function for the thread. \\
+\hline
+{\em arg} & The void\texorpdfstring{$\ast$}{*} arguments. It\textquotesingle{}s OK for it to be NULL.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_thread}{Thread} 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a3a307acc9dd50e7ade80f025f63dda1f}\label{core_8c_a3a307acc9dd50e7ade80f025f63dda1f} 
+\index{core.c@{core.c}!fillScreen@{fillScreen}}
+\index{fillScreen@{fillScreen}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{fillScreen()}{fillScreen()}}
+{\footnotesize\ttfamily void fill\+Screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win,  }\item[{\mbox{\hyperlink{struct_color}{Color}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Fills the rendering screen with a specified color. 
+
+This function fills the rendering screen on the specified window with the specified color.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & The \doxylink{struct_window}{Window} structure representing the rendering window. \\
+\hline
+{\em color} & The \doxylink{struct_color}{Color} structure defining the fill color.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_aca5519e5f3aa3f7ad92ae4815ea1b5b8}\label{core_8c_aca5519e5f3aa3f7ad92ae4815ea1b5b8} 
+\index{core.c@{core.c}!getTextWidthTTF@{getTextWidthTTF}}
+\index{getTextWidthTTF@{getTextWidthTTF}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{getTextWidthTTF()}{getTextWidthTTF()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_size}{Size}} get\+Text\+Width\+TTF (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_font}{Font}}}]{font,  }\item[{\mbox{\hyperlink{struct_text}{Text}}}]{text }\end{DoxyParamCaption})}
+
+
+
+Gets the width and height of the rendered text in pixels. 
+
+This function calculates and returns the width and height of the rendered text in pixels using the provided \doxylink{struct_font}{Font} and \doxylink{struct_text}{Text} structures.
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & The \doxylink{struct_font}{Font} structure defining the font attributes. \\
+\hline
+{\em text} & The \doxylink{struct_text}{Text} structure containing the text and its attributes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_size}{Size} structure containing the width and height of the rendered text. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a64ef044d74c439f2cf8f692d348dfe9d}\label{core_8c_a64ef044d74c439f2cf8f692d348dfe9d} 
+\index{core.c@{core.c}!init@{init}}
+\index{init@{init}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_window}{Window}} init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Startup the rendering engine. 
+
+Here is where everything that the engine needs get initialized. ~\newline
+ When porting to other systems, make sure that you put the appropriate init\textquotesingle{}s here.
+
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_window}{Window} 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a254000923fedf29bf5ed677ce762f949}\label{core_8c_a254000923fedf29bf5ed677ce762f949} 
+\index{core.c@{core.c}!initFont@{initFont}}
+\index{initFont@{initFont}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{initFont()}{initFont()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_font}{Font}} init\+Font (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{file,  }\item[{int}]{size,  }\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win }\end{DoxyParamCaption})}
+
+
+
+Init a True\+Type \doxylink{struct_font}{Font}. 
+
+If you like drawing text, then you need a font. This function can load a truetype font into the \doxylink{struct_font}{Font} structure, so that you can render text. ~\newline
+ Note\+: On font size\textquotesingle{}s below 20, things go weird for some reason.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & True\+Type \doxylink{struct_font}{Font} File Location. \\
+\hline
+{\em size} & The size of your font. \\
+\hline
+{\em win} & Your window.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_font}{Font} 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a3d8517c0511292474455e64999069923}\label{core_8c_a3d8517c0511292474455e64999069923} 
+\index{core.c@{core.c}!initRect@{initRect}}
+\index{initRect@{initRect}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{initRect()}{initRect()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_rect}{Rect}} init\+Rect (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{\mbox{\hyperlink{struct_color}{Color}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Initializes a \doxylink{struct_rect}{Rect} structure with the specified parameters. 
+
+This function creates a \doxylink{struct_rect}{Rect} structure and initializes its attributes, including the position, size, color, and returns the initialized structure. The resulting \doxylink{struct_rect}{Rect} structure can be used for rendering rectangles.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the rectangle. \\
+\hline
+{\em y} & The y-\/coordinate of the rectangle. \\
+\hline
+{\em w} & The width of the rectangle. \\
+\hline
+{\em h} & The height of the rectangle. \\
+\hline
+{\em color} & The color of the rectangle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_rect}{Rect} structure initialized with the specified parameters. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a4646869806700de48a63cfa46794d0b0}\label{core_8c_a4646869806700de48a63cfa46794d0b0} 
+\index{core.c@{core.c}!initText@{initText}}
+\index{initText@{initText}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{initText()}{initText()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_text}{Text}} init\+Text (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{length,  }\item[{\mbox{\hyperlink{struct_color}{Color}}}]{color,  }\item[{\mbox{\hyperlink{struct_font}{Font}}}]{font }\end{DoxyParamCaption})}
+
+
+
+Initializes a \doxylink{struct_text}{Text} structure with the specified parameters. 
+
+This function creates a \doxylink{struct_text}{Text} structure and initializes its attributes, including the input string, position, length, color, and font. The resulting \doxylink{struct_text}{Text} structure can be used for rendering text in a window.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The input string to be displayed. \\
+\hline
+{\em x} & The x-\/coordinate of the text position. \\
+\hline
+{\em y} & The y-\/coordinate of the text position. \\
+\hline
+{\em length} & The length of the input string. \\
+\hline
+{\em color} & The color of the text. \\
+\hline
+{\em font} & The font to be used for rendering the text.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_text}{Text} structure initialized with the specified parameters. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a0d2b4d8e5e613807efc3811869710186}\label{core_8c_a0d2b4d8e5e613807efc3811869710186} 
+\index{core.c@{core.c}!initTexture@{initTexture}}
+\index{initTexture@{initTexture}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{initTexture()}{initTexture()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_texture}{Texture}} init\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win,  }\item[{char \texorpdfstring{$\ast$}{*}}]{file,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{float}]{rotation,  }\item[{bool}]{rotate\+ACent }\end{DoxyParamCaption})}
+
+
+
+Initializes a \doxylink{struct_texture}{Texture} structure from an image file. 
+
+This function creates a \doxylink{struct_texture}{Texture} structure and loads an image file to associate with the texture. It also sets the texture\textquotesingle{}s position, size, rotation, and rotation around center flag.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & The window in which the texture will be rendered. \\
+\hline
+{\em file} & The path to the image file. \\
+\hline
+{\em x} & The x-\/coordinate of the texture. \\
+\hline
+{\em y} & The y-\/coordinate of the texture. \\
+\hline
+{\em w} & The width of the texture. \\
+\hline
+{\em h} & The height of the texture. \\
+\hline
+{\em rotation} & The rotation angle of the texture. \\
+\hline
+{\em rotate\+ACent} & If true, the texture rotates around its center; otherwise, it rotates around its top-\/left corner.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_texture}{Texture} structure initialized with the specified parameters. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_af55e9ed2b0807c2ae9f7ab01f11744b3}\label{core_8c_af55e9ed2b0807c2ae9f7ab01f11744b3} 
+\index{core.c@{core.c}!loadModel@{loadModel}}
+\index{loadModel@{loadModel}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{loadModel()}{loadModel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_model}{Model}} load\+Model (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})}
+
+
+
+Loads a 3D model from a binary file. 
+
+This function loads a 3D model from a binary file, including mesh count, mesh details, and optionally textures.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The name of the binary file to load the model from.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The loaded \doxylink{struct_model}{Model} structure. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a6d38b69a69f8d4415a55f04afcc3d515}\label{core_8c_a6d38b69a69f8d4415a55f04afcc3d515} 
+\index{core.c@{core.c}!loadRawData@{loadRawData}}
+\index{loadRawData@{loadRawData}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{loadRawData()}{loadRawData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_raw_data}{Raw\+Data}} load\+Raw\+Data (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Load file into raw buffer. 
+
+When dealing with stuff that needs to read from buffers, use this to get files into buffers fast! ~\newline
+ When cleaning up, don\textquotesingle{}t forget to do a \doxylink{memory_8c_a6a1a10ce3514d99b5805d67af8e058a5}{free\+Memory()} on the data for the buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The file you wish to put into a buffer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_raw_data}{Raw\+Data} 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a561c06c78b85872932ef525c8e25cb55}\label{core_8c_a561c06c78b85872932ef525c8e25cb55} 
+\index{core.c@{core.c}!loadTexture@{loadTexture}}
+\index{loadTexture@{loadTexture}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{loadTexture()}{loadTexture()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_texture}{Texture}} load\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win,  }\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{data,  }\item[{int}]{size,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{float}]{rotation,  }\item[{bool}]{rotate\+ACent }\end{DoxyParamCaption})}
+
+
+
+Creates a \doxylink{struct_texture}{Texture} structure from image data. 
+
+This function creates a \doxylink{struct_texture}{Texture} structure and loads an image from the provided data. It sets the texture\textquotesingle{}s position, size, rotation, and rotation around center flag.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & The window in which the texture will be rendered. \\
+\hline
+{\em data} & The image data. \\
+\hline
+{\em size} & The size of the image data. \\
+\hline
+{\em x} & The x-\/coordinate of the texture. \\
+\hline
+{\em y} & The y-\/coordinate of the texture. \\
+\hline
+{\em w} & The width of the texture. \\
+\hline
+{\em h} & The height of the texture. \\
+\hline
+{\em rotation} & The rotation angle of the texture. \\
+\hline
+{\em rotate\+ACent} & If true, the texture rotates around its center; otherwise, it rotates around its top-\/left corner.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_texture}{Texture} structure initialized with the specified parameters. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_aaf30f1a427b8bffa96b66756e1af926b}\label{core_8c_aaf30f1a427b8bffa96b66756e1af926b} 
+\index{core.c@{core.c}!problem@{problem}}
+\index{problem@{problem}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{problem()}{problem()}}
+{\footnotesize\ttfamily void problem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win,  }\item[{char \texorpdfstring{$\ast$}{*}}]{txt,  }\item[{bool}]{exiter }\end{DoxyParamCaption})}
+
+
+
+Displays an error message in a window and optionally exits the program. 
+
+This function displays an error message in a specified window using the given text. ~\newline
+ It also provides an option to exit the program when the user presses the MENU key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & The window in which the error message will be displayed. \\
+\hline
+{\em txt} & The error message text to be displayed. \\
+\hline
+{\em exiter} & If true, the program will exit when the user presses the MENU key; otherwise, it continues running.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_ad8e33b30bcd6e3776aaeddd98acdbd3b}\label{core_8c_ad8e33b30bcd6e3776aaeddd98acdbd3b} 
+\index{core.c@{core.c}!rectToObj@{rectToObj}}
+\index{rectToObj@{rectToObj}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{rectToObj()}{rectToObj()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*} rect\+To\+Obj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_rect}{Rect}}}]{rect }\end{DoxyParamCaption})}
+
+
+
+Converts a \doxylink{struct_rect}{Rect} structure to an \doxylink{struct_object}{Object} structure. 
+
+This function creates an \doxylink{struct_object}{Object} structure and initializes its position and size based on the provided \doxylink{struct_rect}{Rect} structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & The \doxylink{struct_rect}{Rect} structure to be converted to an \doxylink{struct_object}{Object}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An \doxylink{struct_object}{Object} structure initialized with the \doxylink{struct_rect}{Rect}\textquotesingle{}s position and size. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a544acafb9d3b5ab6f6f55aa9394835ed}\label{core_8c_a544acafb9d3b5ab6f6f55aa9394835ed} 
+\index{core.c@{core.c}!renderButton@{renderButton}}
+\index{renderButton@{renderButton}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{renderButton()}{renderButton()}}
+{\footnotesize\ttfamily void render\+Button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{window,  }\item[{\mbox{\hyperlink{struct_button}{Button}}}]{button }\end{DoxyParamCaption})}
+
+
+
+Renders a button onto a window. 
+
+This function renders a button, represented as a rectangle with text, onto the specified window. The rendering process varies between Windows and Wii platforms.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The \doxylink{struct_window}{Window} structure onto which the button will be rendered. \\
+\hline
+{\em button} & The \doxylink{struct_button}{Button} structure defining the button\textquotesingle{}s attributes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a2aabbada4fa10c695c9d4fdf3e54b490}\label{core_8c_a2aabbada4fa10c695c9d4fdf3e54b490} 
+\index{core.c@{core.c}!renderMBox@{renderMBox}}
+\index{renderMBox@{renderMBox}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{renderMBox()}{renderMBox()}}
+{\footnotesize\ttfamily void render\+MBox (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{window,  }\item[{\mbox{\hyperlink{struct_message_box_rend}{Message\+Box\+Rend}}}]{msg\+Box,  }\item[{bool}]{mouse\+Down,  }\item[{int}]{mouseX,  }\item[{int}]{mouseY }\end{DoxyParamCaption})}
+
+
+
+Renders a message box on a window. 
+
+This function renders a message box on the specified window, including background, foreground, title, text, and a close button. It also handles the click event on the close button.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The \doxylink{struct_window}{Window} structure onto which the message box will be rendered. \\
+\hline
+{\em msg\+Box} & The \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure defining the message box\textquotesingle{}s attributes. \\
+\hline
+{\em mouse\+Down} & Indicates whether the mouse button is down. \\
+\hline
+{\em mouseX} & The x-\/coordinate of the mouse cursor. \\
+\hline
+{\em mouseY} & The y-\/coordinate of the mouse cursor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a80f9e08da412bdfae07aa09847d6de96}\label{core_8c_a80f9e08da412bdfae07aa09847d6de96} 
+\index{core.c@{core.c}!renderMesh@{renderMesh}}
+\index{renderMesh@{renderMesh}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{renderMesh()}{renderMesh()}}
+{\footnotesize\ttfamily void render\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win,  }\item[{\mbox{\hyperlink{struct_mesh}{Mesh}}}]{mesh }\end{DoxyParamCaption})}
+
+
+
+Renders a 3D mesh on the window. 
+
+This function renders a 3D mesh on the specified window using either GRRLIB for the Nintendo Wii or Open\+GL for other platforms.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & The \doxylink{struct_window}{Window} structure representing the rendering window. \\
+\hline
+{\em mesh} & The \doxylink{struct_mesh}{Mesh} structure defining the 3D mesh and its attributes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a88a547c96c9ce3906c0cf22bdf504084}\label{core_8c_a88a547c96c9ce3906c0cf22bdf504084} 
+\index{core.c@{core.c}!renderModel@{renderModel}}
+\index{renderModel@{renderModel}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{renderModel()}{renderModel()}}
+{\footnotesize\ttfamily void render\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win,  }\item[{\mbox{\hyperlink{struct_model}{Model}}}]{model }\end{DoxyParamCaption})}
+
+
+
+Renders a 3D model on the window. 
+
+This function renders a 3D model on the specified window by iterating through its meshes and rendering each one using the render\+Mesh function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & The \doxylink{struct_window}{Window} structure representing the rendering window. \\
+\hline
+{\em model} & The \doxylink{struct_model}{Model} structure defining the 3D model and its meshes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_af1933685fa520954fb16f6272fbaef6f}\label{core_8c_af1933685fa520954fb16f6272fbaef6f} 
+\index{core.c@{core.c}!renderRect@{renderRect}}
+\index{renderRect@{renderRect}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{renderRect()}{renderRect()}}
+{\footnotesize\ttfamily void render\+Rect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{window,  }\item[{\mbox{\hyperlink{struct_rect}{Rect}}}]{rect }\end{DoxyParamCaption})}
+
+
+
+Renders a rectangle onto a window. 
+
+This function renders a rectangle onto the specified window. The rendering process varies between Windows and Wii platforms, supporting color and size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The \doxylink{struct_window}{Window} structure onto which the rectangle will be rendered. \\
+\hline
+{\em rect} & The \doxylink{struct_rect}{Rect} structure defining the position, size, and color of the rectangle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_ac0d267fc6fbf8979c1512214c0168326}\label{core_8c_ac0d267fc6fbf8979c1512214c0168326} 
+\index{core.c@{core.c}!renderText@{renderText}}
+\index{renderText@{renderText}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{renderText()}{renderText()}}
+{\footnotesize\ttfamily void render\+Text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{window,  }\item[{\mbox{\hyperlink{struct_text}{Text}}}]{text }\end{DoxyParamCaption})}
+
+
+
+Renders text onto a window. 
+
+This function renders text onto the specified window. The rendering process varies between Windows and Wii platforms, supporting True\+Type fonts.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The \doxylink{struct_window}{Window} structure onto which the text will be rendered. \\
+\hline
+{\em text} & The \doxylink{struct_text}{Text} structure containing the text and its attributes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a52910aaed2b1ae865852cc90fa4b93ed}\label{core_8c_a52910aaed2b1ae865852cc90fa4b93ed} 
+\index{core.c@{core.c}!renderTexture@{renderTexture}}
+\index{renderTexture@{renderTexture}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{renderTexture()}{renderTexture()}}
+{\footnotesize\ttfamily void render\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_texture}{Texture}}}]{tex,  }\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win }\end{DoxyParamCaption})}
+
+
+
+Renders a texture onto a window. 
+
+This function renders a texture onto the specified window. The rendering process varies between Windows and Wii platforms, supporting rotation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tex} & The \doxylink{struct_texture}{Texture} structure to be rendered. \\
+\hline
+{\em win} & The \doxylink{struct_window}{Window} structure onto which the texture will be rendered.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a46e51a1a97133b622c519a2f2e4b9e6c}\label{core_8c_a46e51a1a97133b622c519a2f2e4b9e6c} 
+\index{core.c@{core.c}!rePosButton@{rePosButton}}
+\index{rePosButton@{rePosButton}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{rePosButton()}{rePosButton()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_button}{Button}} re\+Pos\+Button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button}{Button}}}]{c\+Button,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Repositions a \doxylink{struct_button}{Button} structure to the specified coordinates and updates its size. 
+
+This function takes an existing \doxylink{struct_button}{Button} structure, copies it, and then updates the position coordinates, width, and height to the provided values. The modified \doxylink{struct_button}{Button} structure is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\+Button} & The original \doxylink{struct_button}{Button} structure to be repositioned and resized. \\
+\hline
+{\em x} & The new x-\/coordinate for the \doxylink{struct_button}{Button}. \\
+\hline
+{\em y} & The new y-\/coordinate for the \doxylink{struct_button}{Button}. \\
+\hline
+{\em w} & The new width for the \doxylink{struct_button}{Button}. \\
+\hline
+{\em h} & The new height for the \doxylink{struct_button}{Button}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_button}{Button} structure with updated position coordinates and size. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a052f06b968379e7018fb09a78e134717}\label{core_8c_a052f06b968379e7018fb09a78e134717} 
+\index{core.c@{core.c}!rePosMessageBox@{rePosMessageBox}}
+\index{rePosMessageBox@{rePosMessageBox}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{rePosMessageBox()}{rePosMessageBox()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_message_box_rend}{Message\+Box\+Rend}} re\+Pos\+Message\+Box (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_message_box_rend}{Message\+Box\+Rend}}}]{cmb,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Repositions a \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure to the specified coordinates and updates its size. 
+
+This function takes an existing \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure, copies it, and then updates the position coordinates, width, and height to the provided values. The modified \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmb} & The original \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure to be repositioned and resized. \\
+\hline
+{\em x} & The new x-\/coordinate for the \doxylink{struct_message_box_rend}{Message\+Box\+Rend}. \\
+\hline
+{\em y} & The new y-\/coordinate for the \doxylink{struct_message_box_rend}{Message\+Box\+Rend}. \\
+\hline
+{\em w} & The new width for the \doxylink{struct_message_box_rend}{Message\+Box\+Rend}. \\
+\hline
+{\em h} & The new height for the \doxylink{struct_message_box_rend}{Message\+Box\+Rend}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_message_box_rend}{Message\+Box\+Rend} structure with updated position coordinates and size. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_ae24f77b948ad108d372950166577dc38}\label{core_8c_ae24f77b948ad108d372950166577dc38} 
+\index{core.c@{core.c}!rePosRect@{rePosRect}}
+\index{rePosRect@{rePosRect}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{rePosRect()}{rePosRect()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_rect}{Rect}} re\+Pos\+Rect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_rect}{Rect}}}]{c\+Rect,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Repositions a \doxylink{struct_rect}{Rect} structure to the specified coordinates and updates its size. 
+
+This function takes an existing \doxylink{struct_rect}{Rect} structure, copies it, and then updates the position coordinates, width, and height to the provided values. The modified \doxylink{struct_rect}{Rect} structure is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\+Rect} & The original \doxylink{struct_rect}{Rect} structure to be repositioned and resized. \\
+\hline
+{\em x} & The new x-\/coordinate for the \doxylink{struct_rect}{Rect}. \\
+\hline
+{\em y} & The new y-\/coordinate for the \doxylink{struct_rect}{Rect}. \\
+\hline
+{\em w} & The new width for the \doxylink{struct_rect}{Rect}. \\
+\hline
+{\em h} & The new height for the \doxylink{struct_rect}{Rect}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_rect}{Rect} structure with updated position coordinates and size. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_ae5933f5eb2c51b096bf77f6499f0330d}\label{core_8c_ae5933f5eb2c51b096bf77f6499f0330d} 
+\index{core.c@{core.c}!rePosText@{rePosText}}
+\index{rePosText@{rePosText}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{rePosText()}{rePosText()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_text}{Text}} re\+Pos\+Text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_text}{Text}}}]{c\+Text,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Repositions a \doxylink{struct_text}{Text} structure to the specified coordinates. 
+
+This function takes an existing \doxylink{struct_text}{Text} structure, copies it, and then updates the position coordinates to the provided x and y values. The modified \doxylink{struct_text}{Text} structure is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\+Text} & The original \doxylink{struct_text}{Text} structure to be repositioned. \\
+\hline
+{\em x} & The new x-\/coordinate for the \doxylink{struct_text}{Text}. \\
+\hline
+{\em y} & The new y-\/coordinate for the \doxylink{struct_text}{Text}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_text}{Text} structure with updated position coordinates. 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a7eeb95808eec2bc35ecadcde9884c3a2}\label{core_8c_a7eeb95808eec2bc35ecadcde9884c3a2} 
+\index{core.c@{core.c}!saveModel@{saveModel}}
+\index{saveModel@{saveModel}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{saveModel()}{saveModel()}}
+{\footnotesize\ttfamily void save\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_model}{Model}}}]{model,  }\item[{char \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})}
+
+
+
+Saves a 3D model to a binary file. 
+
+This function saves a 3D model to a binary file, including mesh count, mesh details, and optionally textures.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & The \doxylink{struct_model}{Model} structure representing the 3D model to be saved. \\
+\hline
+{\em file} & The name of the binary file to save the model to.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_ad33f3c8c4e551a61d95cb53313f3c377}\label{core_8c_ad33f3c8c4e551a61d95cb53313f3c377} 
+\index{core.c@{core.c}!setRenderColor@{setRenderColor}}
+\index{setRenderColor@{setRenderColor}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{setRenderColor()}{setRenderColor()}}
+{\footnotesize\ttfamily void set\+Render\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{window,  }\item[{\mbox{\hyperlink{struct_color}{Color}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Sets the rendering color on the window. 
+
+This function sets the rendering color on the specified window.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The \doxylink{struct_window}{Window} structure representing the rendering window. \\
+\hline
+{\em color} & The \doxylink{struct_color}{Color} structure defining the rendering color.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_afa7519b4c6501ba46f7b62efa70329b3}\label{core_8c_afa7519b4c6501ba46f7b62efa70329b3} 
+\index{core.c@{core.c}!showSplash@{showSplash}}
+\index{showSplash@{showSplash}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{showSplash()}{showSplash()}}
+{\footnotesize\ttfamily void show\+Splash (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win }\end{DoxyParamCaption})}
+
+
+
+Shows the splash screen. 
+
+This function is called in \doxylink{core_8c_a64ef044d74c439f2cf8f692d348dfe9d}{init()} to show you the version of mprenderer. ~\newline
+ We strongly recommend this not be disabled so that you know if the renderer is working at all.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & The window Parameter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a913c690a548a3bde58d7061546355622}\label{core_8c_a913c690a548a3bde58d7061546355622} 
+\index{core.c@{core.c}!simpleCollisionDetector@{simpleCollisionDetector}}
+\index{simpleCollisionDetector@{simpleCollisionDetector}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{simpleCollisionDetector()}{simpleCollisionDetector()}}
+{\footnotesize\ttfamily void simple\+Collision\+Detector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}}]{sprite1,  }\item[{\mbox{\hyperlink{struct_object}{Object}} \texorpdfstring{$\ast$}{*}}]{sprite2,  }\item[{int \texorpdfstring{$\ast$}{*}}]{x\+Hit,  }\item[{int \texorpdfstring{$\ast$}{*}}]{y\+Hit }\end{DoxyParamCaption})}
+
+
+
+Performs simple collision detection between two objects. 
+
+This function checks whether two objects are colliding and sets the x\+Hit and y\+Hit variables accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite1} & The first \doxylink{struct_object}{Object}. \\
+\hline
+{\em sprite2} & The second \doxylink{struct_object}{Object}. \\
+\hline
+{\em x\+Hit} & A pointer to the x-\/axis collision indicator. \\
+\hline
+{\em y\+Hit} & A pointer to the y-\/axis collision indicator.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{core_8c_a6ff50275544a950c852f81399b0441d3}\label{core_8c_a6ff50275544a950c852f81399b0441d3} 
+\index{core.c@{core.c}!updateWindow@{updateWindow}}
+\index{updateWindow@{updateWindow}!core.c@{core.c}}
+\doxysubsubsection{\texorpdfstring{updateWindow()}{updateWindow()}}
+{\footnotesize\ttfamily void update\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win }\end{DoxyParamCaption})}
+
+
+
+Updates the rendering window. 
+
+This function updates the rendering window by presenting the renderer\textquotesingle{}s content, clearing the renderer, and updating the window surface.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & The \doxylink{struct_window}{Window} structure representing the rendering window.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

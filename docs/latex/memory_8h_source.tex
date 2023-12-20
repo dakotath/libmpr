@@ -1,0 +1,66 @@
+\doxysection{memory.\+h}
+\hypertarget{memory_8h_source}{}\label{memory_8h_source}\index{include/MPR/memory.h@{include/MPR/memory.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Memory\ Management\ utilities}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ DevKitPPC\ stuff}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <gctypes.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <gccore.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <wiiuse/wpad.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <fat.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <asndlib.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <ogcsys.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <Windows.h>}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ rendering\ for\ Windows\ is\ done\ with\ SDL2}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_mixer.h>}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ u8\ Uint8}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ u16\ Uint16}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ u32\ Uint32}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ s8\ Sint8}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ s16\ Sint16}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ s32\ Sint32}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ f32\ float}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ f64\ double}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ s64\ Sint64}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ u64\ Uint64}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ memManagement\ stuff}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ MB\ (1024\ *\ 1024)}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ TOTAL\_AVAILABLE\_MEMORY\ 24\ *\ MB\ }\textcolor{comment}{//\ 24\ MB}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ TOTAL\_AVAILABLE\_MEMORY\ 512\ *\ MB\ }\textcolor{comment}{//\ 8\ GB}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{memory_8c_abff1f7f1361b033c599141b1981f17c6}{bytes\_to\_KMGTP}}(u64\ bytes);}
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{memory_8c_a4a1689c40ab31d1426e7ab3862859093}{allocateMemory}}(u64\ size);}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{memory_8c_a1186135cd895e2b583fb09ebea779748}{allocateClearedMemory}}(u64\ arg1,\ u64\ arg2);}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{memory_8c_a4c86986f697781c5de782ab1b1c75286}{allocateMemoryAlligned}}(u64\ size,\ u64\ alignment);}
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{memory_8c_a6a1a10ce3514d99b5805d67af8e058a5}{freeMemory}}(\textcolor{keywordtype}{void}*\ ptr);}
+\DoxyCodeLine{00058\ u64\ \mbox{\hyperlink{memory_8c_a9a723e225ee9135d40b23317e3a92892}{getAvailableMemory}}();}
+\DoxyCodeLine{00059\ u64\ \mbox{\hyperlink{memory_8c_a7b98d9f8a6b22fb76bbb2688ac70a39d}{getUsedMemory}}();}
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{memory_8c_aead97c99e70c0da7036fbbe230ef68b6}{printUsage}}();}
+
+\end{DoxyCode}

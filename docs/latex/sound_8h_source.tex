@@ -1,0 +1,72 @@
+\doxysection{sound.\+h}
+\hypertarget{sound_8h_source}{}\label{sound_8h_source}\index{include/MPR/sound.h@{include/MPR/sound.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ MPRend\ -\/\ Controller\ input}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <Windows.h>}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ rendering\ for\ Windows\ is\ done\ with\ SDL2}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_mixer.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ u8\ Uint8}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ u16\ Uint16}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ u32\ Uint32}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ s8\ Sint8}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ s16\ Sint16}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ s32\ Sint32}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ f32\ float}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ f64\ double}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ s64\ Sint64}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ u64\ Uint64}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <grrlib.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <fat.h>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <ogcsys.h>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <gccore.h>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <asndlib.h>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <wiiuse/wpad.h>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ define\ audio\ formats}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ SOUND\_S16SYS\ AUDIO\_S16SYS}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ SOUND\_U16SYS\ AUDIO\_U16SYS}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ SOUND\_S8\ AUDIO\_S8}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ SOUND\_U8\ AUDIO\_U8}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ SOUND\_F32SYS\ AUDIO\_F32SYS}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ SOUND\_S16SYS\ VOICE\_STEREO\_16BIT}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ SOUND\_U16SYS\ VOICE\_STEREO\_16BIT}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ SOUND\_S8\ VOICE\_MONO\_8BIT}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ SOUND\_U8\ VOICE\_MONO\_8BIT}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ SOUND\_F32SYS\ VOICE\_STEREO\_16BIT}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00058\ s16\ *\mbox{\hyperlink{sound_8c_a1759bec7b01a8376426d99fa48941e09}{leBuf\_to\_beBuf}}(s16\ *buf,\ \textcolor{keywordtype}{long}\ bufSize);}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ enqueueBuffer(\textcolor{keywordtype}{void}*\ buf,\ \textcolor{keywordtype}{long}\ bufSize);}
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ playNextAudioBuffer();}
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ initAudioQueue();}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sound_8c_ae1aabf24cb1dc87c63ca08f9d0c63b40}{beep}}(\textcolor{keywordtype}{double}\ f,\ \textcolor{keywordtype}{int}\ t);}
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sound_8c_af8c0ccf7f74b5b166ff85aa6e673c06d}{playBuffer}}(\textcolor{keywordtype}{void}*\ buf,\ \textcolor{keywordtype}{long}\ bufSize);}
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sound_8c_abbb2d2838127e273412cfb34f6458553}{playOgg}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *buffer,\ s32\ len,\ \textcolor{keywordtype}{int}\ time\_pos,\ \textcolor{keywordtype}{int}\ mode);}
+
+\end{DoxyCode}

@@ -1,0 +1,57 @@
+\doxysection{moviegif.\+h}
+\hypertarget{moviegif_8h_source}{}\label{moviegif_8h_source}\index{include/MPR/moviegif.h@{include/MPR/moviegif.h}}
+\mbox{\hyperlink{moviegif_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MOVIEGIF\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MOVIEGIF\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <MPR/gifdec.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <MPR/memory.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <MPR/sound.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <MPR/core.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ MOGI\_AUDIO\_OGG,}
+\DoxyCodeLine{00025\ \ \ \ \ MOGI\_AUDIO\_PCM}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{/*\ Magic\ and\ Version\ */}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{char}\ magic[4];}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ version;}
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{/*\ Gif\ Details.\ */}}
+\DoxyCodeLine{00038\ \ \ \ \ uint16\_t\ gif\_width;}
+\DoxyCodeLine{00039\ \ \ \ \ uint16\_t\ gif\_height;}
+\DoxyCodeLine{00040\ \ \ \ \ uint8\_t\ gif\_framerate;}
+\DoxyCodeLine{00041\ \ \ \ \ uint32\_t\ gif\_frames;}
+\DoxyCodeLine{00042\ \ \ \ \ uint64\_t\ gif\_dataSize;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{/*\ Audio\ Details\ */}}
+\DoxyCodeLine{00045\ \ \ \ \ uint8\_t\ audio\_type;}
+\DoxyCodeLine{00046\ \ \ \ \ uint16\_t\ audio\_bitrate;}
+\DoxyCodeLine{00047\ \ \ \ \ uint8\_t\ audio\_channels;}
+\DoxyCodeLine{00048\ \ \ \ \ uint64\_t\ audio\_dataSize;}
+\DoxyCodeLine{00049\ \}\ \mbox{\hyperlink{structmoviegif__header__t}{moviegif\_header\_t}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{structmoviegif__header__t}{moviegif\_header\_t}}\ meta;\ \textcolor{comment}{//\ Metadata.}}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}}*\ gifdata;}
+\DoxyCodeLine{00057\ \ \ \ \ uint8\_t*\ audiodata;}
+\DoxyCodeLine{00058\ \}\ \mbox{\hyperlink{struct_movie_gif__t}{MovieGif\_t}};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{moviegif_8h_ad8d662218c1b4215c577eaa2d99dd6b4}{MovieGif\_CreateMovieFromFiles}}(\textcolor{keywordtype}{char}*\ gifFile,\ \textcolor{keywordtype}{char}*\ audioFile,\ \textcolor{keywordtype}{char}*\ outputFile,\ uint8\_t\ audiotype,\ uint16\_t\ audio\_bitrate,\ uint8\_t\ audio\_channels);}
+\DoxyCodeLine{00061\ \mbox{\hyperlink{struct_movie_gif__t}{MovieGif\_t}}\ \mbox{\hyperlink{moviegif_8h_a227077ffc097a4e02d81c87095096156}{LoadMovieGif}}(\textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{moviegif_8h_aafa2f0a7534bc23beb5a4c71d29b9851}{MovieGif\_TestPlayback}}(\mbox{\hyperlink{struct_window}{Window}}\ win,\ \mbox{\hyperlink{struct_movie_gif__t}{MovieGif\_t}}\ movie);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "gifdec.h": "c",
+        "sdl_image.h": "c",
+        "memory.h": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "input.h": "c",
+        "stdbool.h": "c",
+        "sound.h": "c"
+    }
+}

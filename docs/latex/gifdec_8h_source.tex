@@ -1,0 +1,62 @@
+\doxysection{gifdec.\+h}
+\hypertarget{gifdec_8h_source}{}\label{gifdec_8h_source}\index{include/MPR/gifdec.h@{include/MPR/gifdec.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GIFDEC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GIFDEC\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgd___palette}{gd\_Palette}}\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{00013\ \ \ \ \ uint8\_t\ colors[0x100\ *\ 3];}
+\DoxyCodeLine{00014\ \}\ \mbox{\hyperlink{structgd___palette}{gd\_Palette}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgd___g_c_e}{gd\_GCE}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ uint16\_t\ delay;}
+\DoxyCodeLine{00018\ \ \ \ \ uint8\_t\ tindex;}
+\DoxyCodeLine{00019\ \ \ \ \ uint8\_t\ disposal;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ input;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ transparency;}
+\DoxyCodeLine{00022\ \}\ \mbox{\hyperlink{structgd___g_c_e}{gd\_GCE}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ fd;}
+\DoxyCodeLine{00026\ \ \ \ \ off\_t\ anim\_start;}
+\DoxyCodeLine{00027\ \ \ \ \ uint16\_t\ width,\ height;}
+\DoxyCodeLine{00028\ \ \ \ \ uint16\_t\ depth;}
+\DoxyCodeLine{00029\ \ \ \ \ uint16\_t\ loop\_count;}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{structgd___g_c_e}{gd\_GCE}}\ gce;}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{structgd___palette}{gd\_Palette}}\ *palette;}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{structgd___palette}{gd\_Palette}}\ lct,\ gct;}
+\DoxyCodeLine{00033\ \ \ \ \ void\ (*plain\_text)(}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}}\ *gif,\ uint16\_t\ tx,\ uint16\_t\ ty,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ uint16\_t\ tw,\ uint16\_t\ th,\ uint8\_t\ cw,\ uint8\_t\ ch,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ uint8\_t\ fg,\ uint8\_t\ bg}
+\DoxyCodeLine{00037\ \ \ \ \ );}
+\DoxyCodeLine{00038\ \ \ \ \ void\ (*comment)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}}\ *gif);}
+\DoxyCodeLine{00039\ \ \ \ \ void\ (*application)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}}\ *gif,\ \textcolor{keywordtype}{char}\ \textcolor{keywordtype}{id}[8],\ \textcolor{keywordtype}{char}\ auth[3]);}
+\DoxyCodeLine{00040\ \ \ \ \ uint16\_t\ fx,\ fy,\ fw,\ fh;}
+\DoxyCodeLine{00041\ \ \ \ \ uint8\_t\ bgindex;}
+\DoxyCodeLine{00042\ \ \ \ \ uint8\_t\ *canvas,\ *frame;}
+\DoxyCodeLine{00043\ \}\ \mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}}\ *gd\_open\_gif(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fname);}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{int}\ gd\_get\_frame(\mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}}\ *gif);}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ gd\_render\_frame(\mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}}\ *gif,\ uint8\_t\ *buffer);}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{int}\ gd\_is\_bgcolor(\mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}}\ *gif,\ uint8\_t\ color[3]);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ gd\_rewind(\mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}}\ *gif);}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ gd\_close\_gif(\mbox{\hyperlink{structgd___g_i_f}{gd\_GIF}}\ *gif);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00053\ \}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ GIFDEC\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

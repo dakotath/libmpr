@@ -1,0 +1,145 @@
+\doxysection{source/sound.c File Reference}
+\hypertarget{sound_8c}{}\label{sound_8c}\index{source/sound.c@{source/sound.c}}
+{\ttfamily \#include $<$MPR/core.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/sound.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/memory.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/oggplayer.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sound_8c_ae067eae8bb03c49229e423a7b1fe6234}{beep1khz}} ()
+\begin{DoxyCompactList}\small\item\em Generates a 1 k\+Hz tone and plays it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sound_8c_ae1aabf24cb1dc87c63ca08f9d0c63b40}{beep}} (double f, int t)
+\begin{DoxyCompactList}\small\item\em Generates a tone with a specified frequency and duration and plays it. \end{DoxyCompactList}\item 
+s16 \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sound_8c_a1759bec7b01a8376426d99fa48941e09}{le\+Buf\+\_\+to\+\_\+be\+Buf}} (s16 \texorpdfstring{$\ast$}{*}buf, long buf\+Size)
+\begin{DoxyCompactList}\small\item\em Converts a little-\/endian audio buffer to a big-\/endian audio buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sound_8c_af8c0ccf7f74b5b166ff85aa6e673c06d}{play\+Buffer}} (void \texorpdfstring{$\ast$}{*}buf, long buf\+Size)
+\begin{DoxyCompactList}\small\item\em Plays an audio buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sound_8c_abbb2d2838127e273412cfb34f6458553}{play\+Ogg}} (const void \texorpdfstring{$\ast$}{*}buffer, s32 len, int time\+\_\+pos, int mode)
+\begin{DoxyCompactList}\small\item\em Plays an Ogg audio stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sound functions. \begin{DoxyAuthor}{Author}
+Dakota Thorpe. 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/12-\/19 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sound_8c_ae1aabf24cb1dc87c63ca08f9d0c63b40}\label{sound_8c_ae1aabf24cb1dc87c63ca08f9d0c63b40} 
+\index{sound.c@{sound.c}!beep@{beep}}
+\index{beep@{beep}!sound.c@{sound.c}}
+\doxysubsubsection{\texorpdfstring{beep()}{beep()}}
+{\footnotesize\ttfamily void beep (\begin{DoxyParamCaption}\item[{double}]{f,  }\item[{int}]{t }\end{DoxyParamCaption})}
+
+
+
+Generates a tone with a specified frequency and duration and plays it. 
+
+This function generates a tone with a specified frequency and duration and plays it using either SDL2 (Windows) or ASND (Nintendo Wii).
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & The frequency of the tone. \\
+\hline
+{\em t} & The duration of the tone.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{sound_8c_ae067eae8bb03c49229e423a7b1fe6234}\label{sound_8c_ae067eae8bb03c49229e423a7b1fe6234} 
+\index{sound.c@{sound.c}!beep1khz@{beep1khz}}
+\index{beep1khz@{beep1khz}!sound.c@{sound.c}}
+\doxysubsubsection{\texorpdfstring{beep1khz()}{beep1khz()}}
+{\footnotesize\ttfamily void beep1khz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Generates a 1 k\+Hz tone and plays it. 
+
+This function generates a 1 k\+Hz tone and plays it using either SDL2 (Windows) or ASND (Nintendo Wii).
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{sound_8c_a1759bec7b01a8376426d99fa48941e09}\label{sound_8c_a1759bec7b01a8376426d99fa48941e09} 
+\index{sound.c@{sound.c}!leBuf\_to\_beBuf@{leBuf\_to\_beBuf}}
+\index{leBuf\_to\_beBuf@{leBuf\_to\_beBuf}!sound.c@{sound.c}}
+\doxysubsubsection{\texorpdfstring{leBuf\_to\_beBuf()}{leBuf\_to\_beBuf()}}
+{\footnotesize\ttfamily s16 \texorpdfstring{$\ast$}{*} le\+Buf\+\_\+to\+\_\+be\+Buf (\begin{DoxyParamCaption}\item[{s16 \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{long}]{buf\+Size }\end{DoxyParamCaption})}
+
+
+
+Converts a little-\/endian audio buffer to a big-\/endian audio buffer. 
+
+This function converts a little-\/endian audio buffer to a big-\/endian audio buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & The little-\/endian audio buffer. \\
+\hline
+{\em buf\+Size} & \doxylink{struct_size}{Size} of the audio buffer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly allocated big-\/endian audio buffer. 
+\end{DoxyReturn}
+\Hypertarget{sound_8c_af8c0ccf7f74b5b166ff85aa6e673c06d}\label{sound_8c_af8c0ccf7f74b5b166ff85aa6e673c06d} 
+\index{sound.c@{sound.c}!playBuffer@{playBuffer}}
+\index{playBuffer@{playBuffer}!sound.c@{sound.c}}
+\doxysubsubsection{\texorpdfstring{playBuffer()}{playBuffer()}}
+{\footnotesize\ttfamily void play\+Buffer (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{long}]{buf\+Size }\end{DoxyParamCaption})}
+
+
+
+Plays an audio buffer. 
+
+This function plays an audio buffer using either SDL2 (Windows) or ASND (Nintendo Wii).
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & Pointer to the audio buffer. \\
+\hline
+{\em buf\+Size} & \doxylink{struct_size}{Size} of the audio buffer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{sound_8c_abbb2d2838127e273412cfb34f6458553}\label{sound_8c_abbb2d2838127e273412cfb34f6458553} 
+\index{sound.c@{sound.c}!playOgg@{playOgg}}
+\index{playOgg@{playOgg}!sound.c@{sound.c}}
+\doxysubsubsection{\texorpdfstring{playOgg()}{playOgg()}}
+{\footnotesize\ttfamily void play\+Ogg (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{buffer,  }\item[{s32}]{len,  }\item[{int}]{time\+\_\+pos,  }\item[{int}]{mode }\end{DoxyParamCaption})}
+
+
+
+Plays an Ogg audio stream. 
+
+This function plays an Ogg audio stream using either SDL2\+\_\+mixer (Windows) or the built-\/in Ogg player (Nintendo Wii).
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Pointer to the Ogg audio stream buffer. \\
+\hline
+{\em len} & Length of the Ogg audio stream. \\
+\hline
+{\em time\+\_\+pos} & Playback position in seconds (only applicable for SDL2\+\_\+mixer). \\
+\hline
+{\em mode} & Playback mode (only applicable for SDL2\+\_\+mixer).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

@@ -1,0 +1,198 @@
+\doxysection{source/memory.c File Reference}
+\hypertarget{memory_8c}{}\label{memory_8c}\index{source/memory.c@{source/memory.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/memory.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{memory_8c_abff1f7f1361b033c599141b1981f17c6}{bytes\+\_\+to\+\_\+\+KMGTP}} (u64 bytes)
+\begin{DoxyCompactList}\small\item\em Converts bytes to a human-\/readable string with appropriate units (B, KB, MB, GB, TB, PB). \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{memory_8c_a4a1689c40ab31d1426e7ab3862859093}{allocate\+Memory}} (u64 size)
+\begin{DoxyCompactList}\small\item\em Allocates memory and updates memory usage information. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{memory_8c_a1186135cd895e2b583fb09ebea779748}{allocate\+Cleared\+Memory}} (u64 arg1, u64 arg2)
+\begin{DoxyCompactList}\small\item\em Allocates cleared memory and updates memory usage information. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{memory_8c_a4c86986f697781c5de782ab1b1c75286}{allocate\+Memory\+Alligned}} (u64 size, u64 alignment)
+\begin{DoxyCompactList}\small\item\em Allocates aligned memory and updates memory usage information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{memory_8c_a6a1a10ce3514d99b5805d67af8e058a5}{free\+Memory}} (void \texorpdfstring{$\ast$}{*}ptr)
+\begin{DoxyCompactList}\small\item\em Frees memory and updates memory usage information. \end{DoxyCompactList}\item 
+u64 \mbox{\hyperlink{memory_8c_a9a723e225ee9135d40b23317e3a92892}{get\+Available\+Memory}} ()
+\begin{DoxyCompactList}\small\item\em Gets the available memory. \end{DoxyCompactList}\item 
+u64 \mbox{\hyperlink{memory_8c_a7b98d9f8a6b22fb76bbb2688ac70a39d}{get\+Used\+Memory}} ()
+\begin{DoxyCompactList}\small\item\em Gets the used memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{memory_8c_aead97c99e70c0da7036fbbe230ef68b6}{print\+Usage}} ()
+\begin{DoxyCompactList}\small\item\em Prints memory usage information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{memory_8c_a5fbdd6e2cc284e4059ae2444f636ef37}\label{memory_8c_a5fbdd6e2cc284e4059ae2444f636ef37} 
+u64 {\bfseries available\+Memory} = TOTAL\+\_\+\+AVAILABLE\+\_\+\+MEMORY
+\item 
+\Hypertarget{memory_8c_abbffccec2fc891bee5dd9ab5f3e2ca49}\label{memory_8c_abbffccec2fc891bee5dd9ab5f3e2ca49} 
+u64 {\bfseries used\+Memory} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Memory functions. \begin{DoxyAuthor}{Author}
+Dakota Thorpe. 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/12-\/19 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{memory_8c_a1186135cd895e2b583fb09ebea779748}\label{memory_8c_a1186135cd895e2b583fb09ebea779748} 
+\index{memory.c@{memory.c}!allocateClearedMemory@{allocateClearedMemory}}
+\index{allocateClearedMemory@{allocateClearedMemory}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{allocateClearedMemory()}{allocateClearedMemory()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} allocate\+Cleared\+Memory (\begin{DoxyParamCaption}\item[{u64}]{arg1,  }\item[{u64}]{arg2 }\end{DoxyParamCaption})}
+
+
+
+Allocates cleared memory and updates memory usage information. 
+
+This function allocates cleared memory (zero-\/initialized) and updates memory usage information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg1} & First argument for size calculation. \\
+\hline
+{\em arg2} & Second argument for size calculation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the allocated cleared memory. 
+\end{DoxyReturn}
+\Hypertarget{memory_8c_a4a1689c40ab31d1426e7ab3862859093}\label{memory_8c_a4a1689c40ab31d1426e7ab3862859093} 
+\index{memory.c@{memory.c}!allocateMemory@{allocateMemory}}
+\index{allocateMemory@{allocateMemory}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{allocateMemory()}{allocateMemory()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} allocate\+Memory (\begin{DoxyParamCaption}\item[{u64}]{size }\end{DoxyParamCaption})}
+
+
+
+Allocates memory and updates memory usage information. 
+
+This function allocates memory and updates memory usage information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \doxylink{struct_size}{Size} of memory to allocate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the allocated memory. 
+\end{DoxyReturn}
+\Hypertarget{memory_8c_a4c86986f697781c5de782ab1b1c75286}\label{memory_8c_a4c86986f697781c5de782ab1b1c75286} 
+\index{memory.c@{memory.c}!allocateMemoryAlligned@{allocateMemoryAlligned}}
+\index{allocateMemoryAlligned@{allocateMemoryAlligned}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{allocateMemoryAlligned()}{allocateMemoryAlligned()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} allocate\+Memory\+Alligned (\begin{DoxyParamCaption}\item[{u64}]{size,  }\item[{u64}]{alignment }\end{DoxyParamCaption})}
+
+
+
+Allocates aligned memory and updates memory usage information. 
+
+This function allocates aligned memory and updates memory usage information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \doxylink{struct_size}{Size} of memory to allocate. \\
+\hline
+{\em alignment} & Alignment of the memory.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the allocated aligned memory. 
+\end{DoxyReturn}
+\Hypertarget{memory_8c_abff1f7f1361b033c599141b1981f17c6}\label{memory_8c_abff1f7f1361b033c599141b1981f17c6} 
+\index{memory.c@{memory.c}!bytes\_to\_KMGTP@{bytes\_to\_KMGTP}}
+\index{bytes\_to\_KMGTP@{bytes\_to\_KMGTP}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{bytes\_to\_KMGTP()}{bytes\_to\_KMGTP()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} bytes\+\_\+to\+\_\+\+KMGTP (\begin{DoxyParamCaption}\item[{u64}]{bytes }\end{DoxyParamCaption})}
+
+
+
+Converts bytes to a human-\/readable string with appropriate units (B, KB, MB, GB, TB, PB). 
+
+This function converts a byte size to a human-\/readable string with appropriate units.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bytes} & \doxylink{struct_size}{Size} in bytes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated string with the formatted size. 
+\end{DoxyReturn}
+\Hypertarget{memory_8c_a6a1a10ce3514d99b5805d67af8e058a5}\label{memory_8c_a6a1a10ce3514d99b5805d67af8e058a5} 
+\index{memory.c@{memory.c}!freeMemory@{freeMemory}}
+\index{freeMemory@{freeMemory}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{freeMemory()}{freeMemory()}}
+{\footnotesize\ttfamily void free\+Memory (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Frees memory and updates memory usage information. 
+
+This function frees memory and updates memory usage information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & Pointer to the memory to free.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{memory_8c_a9a723e225ee9135d40b23317e3a92892}\label{memory_8c_a9a723e225ee9135d40b23317e3a92892} 
+\index{memory.c@{memory.c}!getAvailableMemory@{getAvailableMemory}}
+\index{getAvailableMemory@{getAvailableMemory}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{getAvailableMemory()}{getAvailableMemory()}}
+{\footnotesize\ttfamily u64 get\+Available\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the available memory. 
+
+This function returns the available memory.
+
+\begin{DoxyReturn}{Returns}
+Available memory. 
+\end{DoxyReturn}
+\Hypertarget{memory_8c_a7b98d9f8a6b22fb76bbb2688ac70a39d}\label{memory_8c_a7b98d9f8a6b22fb76bbb2688ac70a39d} 
+\index{memory.c@{memory.c}!getUsedMemory@{getUsedMemory}}
+\index{getUsedMemory@{getUsedMemory}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{getUsedMemory()}{getUsedMemory()}}
+{\footnotesize\ttfamily u64 get\+Used\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the used memory. 
+
+This function returns the used memory.
+
+\begin{DoxyReturn}{Returns}
+Used memory. 
+\end{DoxyReturn}
+\Hypertarget{memory_8c_aead97c99e70c0da7036fbbe230ef68b6}\label{memory_8c_aead97c99e70c0da7036fbbe230ef68b6} 
+\index{memory.c@{memory.c}!printUsage@{printUsage}}
+\index{printUsage@{printUsage}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{printUsage()}{printUsage()}}
+{\footnotesize\ttfamily void print\+Usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prints memory usage information. 
+
+This function prints memory usage information to the console.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

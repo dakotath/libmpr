@@ -1,0 +1,122 @@
+\doxysection{oggplayer.\+h}
+\hypertarget{oggplayer_8h_source}{}\label{oggplayer_8h_source}\index{include/MPR/oggplayer.h@{include/MPR/oggplayer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ Copyright\ (c)\ 2008\ Francisco\ Mu{\ucr}oz\ 'Hermes'\ <www.elotrolado.net>}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ All\ rights\ reserved.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ }}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ Proper\ (standard)\ vorbis\ usage\ by\ Tantric,\ 2009}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ Threading\ modifications/corrections\ by\ Tantric,\ 2009}}
+\DoxyCodeLine{00007\ \textcolor{comment}{}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without\ }}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ modification,\ are\ permitted\ provided\ that\ the\ following\ conditions\ are\ met:}}
+\DoxyCodeLine{00010\ \textcolor{comment}{}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ -\/\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright\ notice,\ this}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ -\/\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright\ notice,\ }}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the\ documentation\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ and/or\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ -\/\ The\ names\ of\ the\ contributors\ may\ not\ be\ used\ to\ endorse\ or\ promote\ products\ }}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ derived\ from\ this\ software\ without\ specific\ prior\ written\ permission.}}
+\DoxyCodeLine{00018\ \textcolor{comment}{}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS\ "{}AS\ IS"{}\ }}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ AND\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ THE\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ IMPLIED\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ ARE}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ OWNER\ OR\ CONTRIBUTORS\ BE\ LIABLE\ }}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,\ EXEMPLARY,\ OR\ CONSEQUENTIAL\ }}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ }}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR\ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ }}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF\ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ }}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ OR\ TORT\ (INCLUDING\ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ OF\ THIS\ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#if\ defined\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#ifndef\ \_\_OGGPLAYER\_H\_\_}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ \_\_OGGPLAYER\_H\_\_}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ OGG\_ONE\_TIME\ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ OGG\_INFINITE\_TIME\ \ \ \ 1}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ OGG\_STATUS\_RUNNING\ \ \ 1}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ OGG\_STATUS\_ERR\ \ \ \ \ \ -\/1}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ OGG\_STATUS\_PAUSED\ \ \ \ 2}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ OGG\_STATUS\_EOF\ \ \ \ \ 255}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ *\ PlayOgg}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ *\ Creates\ a\ thread\ that\ starts\ playing\ from\ the\ specific\ Ogg\ buffer}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ *\ buffer\ -\/\ pointer\ to\ the\ start\ of\ the\ Ogg\ data}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ *\ len\ -\/\ length\ of\ Ogg\ file}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ *\ time\_pos\ -\/\ initial\ time\ position\ at\ which\ to\ start\ playback}}
+\DoxyCodeLine{00056\ \textcolor{comment}{\ *\ mode\ -\/\ playback\ mode\ (OGG\_ONE\_TIME\ or\ OGG\_INFINITE\_TIME)}}
+\DoxyCodeLine{00057\ \textcolor{comment}{\ *\ returns:\ -\/1\ on\ error,\ 0\ on\ success}}
+\DoxyCodeLine{00058\ \textcolor{comment}{\ ***************************************************************************/}}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{int}\ PlayOgg(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *buffer,\ s32\ len,\ \textcolor{keywordtype}{int}\ time\_pos,\ \textcolor{keywordtype}{int}\ mode);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ *\ StopOgg}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ *\ Stops\ playback.\ The\ player\ thread\ is\ shut\ down.}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ ***************************************************************************/}}
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ StopOgg();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ *\ PauseOgg}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ *\ Pauses\ playback.\ 0\ -\/>\ continue,\ 1-\/>\ pause}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ ***************************************************************************/}}
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ PauseOgg(\textcolor{keywordtype}{int}\ pause);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00076\ \textcolor{comment}{\ *\ StatusOgg}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ *\ Returns\ the\ Ogg\ player's\ status}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ *\ returns:\ }}
+\DoxyCodeLine{00080\ \textcolor{comment}{\ *\ OGG\_STATUS\_RUNNING}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ *\ OGG\_STATUS\_ERR\ \ \ \ -\/>\ not\ initialized}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ *\ OGG\_STATUS\_PAUSED}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ *\ OGG\_STATUS\_EOF\ \ \ \ -\/>\ player\ stopped\ by\ End\ Of\ File}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ ***************************************************************************/}}
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{int}\ StatusOgg();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ *\ SetVolumeOgg}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ *\ Sets\ the\ Ogg\ playback\ volume\ (0\ to\ 255\ (max))}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\ ***************************************************************************/}}
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ SetVolumeOgg(\textcolor{keywordtype}{int}\ volume);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ *\ GetTimeOgg}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ *\ Gets\ current\ Ogg\ position}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ *\ returns\ -\/1\ on\ error,\ or\ the\ time\ in\ milliseconds\ from\ the\ start}}
+\DoxyCodeLine{00099\ \textcolor{comment}{\ ***************************************************************************/}}
+\DoxyCodeLine{00100\ s32\ GetTimeOgg();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ *\ SetTimeOgg}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ *\ Sets\ the\ time\ position}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ *\ time\_pos:\ time\ position\ (in\ milliseconds)\ to\ advance}}
+\DoxyCodeLine{00107\ \textcolor{comment}{\ ***************************************************************************/}}
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{void}\ SetTimeOgg(s32\ time\_pos);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00111\ \}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

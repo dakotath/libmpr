@@ -1,0 +1,165 @@
+\doxysection{source/moviegif.c File Reference}
+\hypertarget{moviegif_8c}{}\label{moviegif_8c}\index{source/moviegif.c@{source/moviegif.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/moviegif.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/gifdec.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/memory.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/sound.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/core.\+h$>$}\newline
+{\ttfamily \#include $<$MPR/input.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{moviegif_8c_ad8d662218c1b4215c577eaa2d99dd6b4}{Movie\+Gif\+\_\+\+Create\+Movie\+From\+Files}} (char \texorpdfstring{$\ast$}{*}gif\+File, char \texorpdfstring{$\ast$}{*}audio\+File, char \texorpdfstring{$\ast$}{*}output\+File, uint8\+\_\+t audiotype, uint16\+\_\+t audio\+\_\+bitrate, uint8\+\_\+t audio\+\_\+channels)
+\begin{DoxyCompactList}\small\item\em Creates a Movie\+Gif file from a GIF and audio file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_movie_gif__t}{Movie\+Gif\+\_\+t}} \mbox{\hyperlink{moviegif_8c_a227077ffc097a4e02d81c87095096156}{Load\+Movie\+Gif}} (char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads a Movie\+Gif from a file. \end{DoxyCompactList}\item 
+u32 \mbox{\hyperlink{moviegif_8c_a46ffc43119318a53a3021fc094a11f68}{ticks\+\_\+to\+\_\+millisecs}} (uint64\+\_\+t ticks)
+\begin{DoxyCompactList}\small\item\em Converts ticks to milliseconds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{moviegif_8c_afa38ded97275f05d70f8c47b0138a20d}{render\+Frame}} (\mbox{\hyperlink{struct_window}{Window}} win, void \texorpdfstring{$\ast$}{*}tex, \mbox{\hyperlink{structgd___g_i_f}{gd\+\_\+\+GIF}} \texorpdfstring{$\ast$}{*}gif, int scale\+\_\+factor)
+\begin{DoxyCompactList}\small\item\em Renders a frame from a GIF onto a window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{moviegif_8c_aafa2f0a7534bc23beb5a4c71d29b9851}{Movie\+Gif\+\_\+\+Test\+Playback}} (\mbox{\hyperlink{struct_window}{Window}} win, \mbox{\hyperlink{struct_movie_gif__t}{Movie\+Gif\+\_\+t}} movie)
+\begin{DoxyCompactList}\small\item\em Tests the playback of a Movie\+Gif. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{moviegif_8c_a3afcc942091a8c1f4ab991a5df8c1535}\label{moviegif_8c_a3afcc942091a8c1f4ab991a5df8c1535} 
+char {\bfseries MOVIEGIF\+\_\+\+MAGIC} \mbox{[}4\mbox{]} = \{\textquotesingle{}M\textquotesingle{},\textquotesingle{}O\textquotesingle{},\textquotesingle{}G\textquotesingle{},\textquotesingle{}I\textquotesingle{}\}
+\item 
+\Hypertarget{moviegif_8c_a4640f955e80676de6009e65646852258}\label{moviegif_8c_a4640f955e80676de6009e65646852258} 
+int {\bfseries MOVIEGIF\+\_\+\+VERSION} = 1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple gif player with audio support written for MPRenderer. \begin{DoxyAuthor}{Author}
+Dakota Thorpe. 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/12-\/19 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{moviegif_8c_a227077ffc097a4e02d81c87095096156}\label{moviegif_8c_a227077ffc097a4e02d81c87095096156} 
+\index{moviegif.c@{moviegif.c}!LoadMovieGif@{LoadMovieGif}}
+\index{LoadMovieGif@{LoadMovieGif}!moviegif.c@{moviegif.c}}
+\doxysubsubsection{\texorpdfstring{LoadMovieGif()}{LoadMovieGif()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_movie_gif__t}{Movie\+Gif\+\_\+t}} Load\+Movie\+Gif (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads a Movie\+Gif from a file. 
+
+This function loads a Movie\+Gif from a file and returns the loaded data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to the Movie\+Gif file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_movie_gif__t}{Movie\+Gif\+\_\+t} struct containing the loaded data. 
+\end{DoxyReturn}
+\Hypertarget{moviegif_8c_ad8d662218c1b4215c577eaa2d99dd6b4}\label{moviegif_8c_ad8d662218c1b4215c577eaa2d99dd6b4} 
+\index{moviegif.c@{moviegif.c}!MovieGif\_CreateMovieFromFiles@{MovieGif\_CreateMovieFromFiles}}
+\index{MovieGif\_CreateMovieFromFiles@{MovieGif\_CreateMovieFromFiles}!moviegif.c@{moviegif.c}}
+\doxysubsubsection{\texorpdfstring{MovieGif\_CreateMovieFromFiles()}{MovieGif\_CreateMovieFromFiles()}}
+{\footnotesize\ttfamily void Movie\+Gif\+\_\+\+Create\+Movie\+From\+Files (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{gif\+File,  }\item[{char \texorpdfstring{$\ast$}{*}}]{audio\+File,  }\item[{char \texorpdfstring{$\ast$}{*}}]{output\+File,  }\item[{uint8\+\_\+t}]{audiotype,  }\item[{uint16\+\_\+t}]{audio\+\_\+bitrate,  }\item[{uint8\+\_\+t}]{audio\+\_\+channels }\end{DoxyParamCaption})}
+
+
+
+Creates a Movie\+Gif file from a GIF and audio file. 
+
+This function creates a Movie\+Gif file from a GIF file and an audio file, storing the result in an output file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em gif\+File} & Path to the input GIF file. \\
+\hline
+{\em audio\+File} & Path to the input audio file. \\
+\hline
+{\em output\+File} & Path to the output Movie\+Gif file. \\
+\hline
+{\em audiotype} & Type of the audio. \\
+\hline
+{\em audio\+\_\+bitrate} & Bitrate of the audio. \\
+\hline
+{\em audio\+\_\+channels} & Number of audio channels.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{moviegif_8c_aafa2f0a7534bc23beb5a4c71d29b9851}\label{moviegif_8c_aafa2f0a7534bc23beb5a4c71d29b9851} 
+\index{moviegif.c@{moviegif.c}!MovieGif\_TestPlayback@{MovieGif\_TestPlayback}}
+\index{MovieGif\_TestPlayback@{MovieGif\_TestPlayback}!moviegif.c@{moviegif.c}}
+\doxysubsubsection{\texorpdfstring{MovieGif\_TestPlayback()}{MovieGif\_TestPlayback()}}
+{\footnotesize\ttfamily void Movie\+Gif\+\_\+\+Test\+Playback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win,  }\item[{\mbox{\hyperlink{struct_movie_gif__t}{Movie\+Gif\+\_\+t}}}]{movie }\end{DoxyParamCaption})}
+
+
+
+Tests the playback of a Movie\+Gif. 
+
+This function tests the playback of a Movie\+Gif on a given window.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & \doxylink{struct_window}{Window} to render onto. \\
+\hline
+{\em movie} & Movie\+Gif data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{moviegif_8c_afa38ded97275f05d70f8c47b0138a20d}\label{moviegif_8c_afa38ded97275f05d70f8c47b0138a20d} 
+\index{moviegif.c@{moviegif.c}!renderFrame@{renderFrame}}
+\index{renderFrame@{renderFrame}!moviegif.c@{moviegif.c}}
+\doxysubsubsection{\texorpdfstring{renderFrame()}{renderFrame()}}
+{\footnotesize\ttfamily void render\+Frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}}}]{win,  }\item[{void \texorpdfstring{$\ast$}{*}}]{tex,  }\item[{\mbox{\hyperlink{structgd___g_i_f}{gd\+\_\+\+GIF}} \texorpdfstring{$\ast$}{*}}]{gif,  }\item[{int}]{scale\+\_\+factor }\end{DoxyParamCaption})}
+
+
+
+Renders a frame from a GIF onto a window. 
+
+This function renders a frame from a GIF onto a window.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & \doxylink{struct_window}{Window} to render onto. \\
+\hline
+{\em tex} & \doxylink{struct_texture}{Texture} to render onto. \\
+\hline
+{\em gif} & GIF data. \\
+\hline
+{\em scale\+\_\+factor} & Scaling factor for the rendered frame.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{moviegif_8c_a46ffc43119318a53a3021fc094a11f68}\label{moviegif_8c_a46ffc43119318a53a3021fc094a11f68} 
+\index{moviegif.c@{moviegif.c}!ticks\_to\_millisecs@{ticks\_to\_millisecs}}
+\index{ticks\_to\_millisecs@{ticks\_to\_millisecs}!moviegif.c@{moviegif.c}}
+\doxysubsubsection{\texorpdfstring{ticks\_to\_millisecs()}{ticks\_to\_millisecs()}}
+{\footnotesize\ttfamily u32 ticks\+\_\+to\+\_\+millisecs (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{ticks }\end{DoxyParamCaption})}
+
+
+
+Converts ticks to milliseconds. 
+
+This function converts ticks to milliseconds.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticks} & Ticks to be converted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Converted milliseconds. 
+\end{DoxyReturn}

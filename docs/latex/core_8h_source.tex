@@ -1,0 +1,282 @@
+\doxysection{core.\+h}
+\hypertarget{core_8h_source}{}\label{core_8h_source}\index{include/MPR/core.h@{include/MPR/core.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Project\ MPRender\ Core\ header}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ CORE\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ CORE\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Windows}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ <windows.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \#include\ <SDL2/SDL\_mixer.h>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#include\ <GL/glew.h>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \#include\ <GL/gl.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Wii}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \#include\ <grrlib.h>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ \#include\ <ogcsys.h>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \#include\ <gccore.h>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \#include\ <wiiuse/wpad.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \#include\ <fat.h>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ CC\_BUILD\_LIB\_GCWII}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}font\_regular\_ttf.h"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#ifndef\ f32}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{float}\ f32;}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#ifndef\ u32}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ u32;}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ Structures}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ data;}
+\DoxyCodeLine{00049\ \ \ \ \ uint64\_t\ size;}
+\DoxyCodeLine{00050\ \}\ \mbox{\hyperlink{struct_raw_data}{RawData}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ HANDLE\ thread;}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ lwp\_t\ thread;}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00060\ \}\ \mbox{\hyperlink{struct_thread}{Thread}};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ Windows}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ SDL\_Window\ *window;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ SDL\_Renderer\ *renderer;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00070\ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ Wii}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00076\ \}\ \mbox{\hyperlink{struct_window}{Window}};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{int}\ y;}
+\DoxyCodeLine{00081\ \}\ \mbox{\hyperlink{struct_vector2}{Vector2}};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ y;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{int}\ z;}
+\DoxyCodeLine{00087\ \}\ \mbox{\hyperlink{struct_vector3}{Vector3}};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{int}\ w;}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ h;}
+\DoxyCodeLine{00092\ \}\ \mbox{\hyperlink{struct_size}{Size}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{int}\ r;}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{int}\ g;}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{int}\ b;}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{int}\ a;}
+\DoxyCodeLine{00099\ \}\ \mbox{\hyperlink{struct_color}{Color}};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ TTF\_Font*\ font;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ file;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ GRRLIB\_ttfFont*\ font;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ file;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00112\ \}\ \mbox{\hyperlink{struct_font}{Font}};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ SDL\_Texture\ *texture;}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ GRRLIB\_texImg\ *texture;}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00122\ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{struct_color}{Color}}\ color;}
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{struct_size}{Size}}\ size;}
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{struct_vector2}{Vector2}}\ position;}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{float}\ rotation;}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{bool}\ rotateAroundCenter;}
+\DoxyCodeLine{00128\ \}\ \mbox{\hyperlink{struct_texture}{Texture}};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00131\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{struct_vector2}{Vector2}}\ pnt;}
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{struct_size}{Size}}\ size;}
+\DoxyCodeLine{00134\ \ \ \ \ \mbox{\hyperlink{struct_color}{Color}}\ color;}
+\DoxyCodeLine{00135\ \}\ \mbox{\hyperlink{struct_rect}{Rect}};}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{struct_vector2}{Vector2}}\ position;}
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{struct_size}{Size}}\ size;}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{int}\ radius;}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{bool}\ filled;}
+\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{struct_color}{Color}}\ color;}
+\DoxyCodeLine{00143\ \}\ \mbox{\hyperlink{struct_circle}{Circle}};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{struct_vector2}{Vector2}}\ position;}
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{struct_size}{Size}}\ size;}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{int}\ radius;}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{bool}\ filled;}
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{struct_color}{Color}}\ color;}
+\DoxyCodeLine{00151\ \}\ \mbox{\hyperlink{struct_triangle}{Triangle}};}
+\DoxyCodeLine{00152\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00153\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{int}\ length;}
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{struct_vector2}{Vector2}}\ pnt;}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{char}*\ str;}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \mbox{\hyperlink{struct_color}{Color}}\ color;}
+\DoxyCodeLine{00159\ \ \ \ \ \mbox{\hyperlink{struct_font}{Font}}\ font;}
+\DoxyCodeLine{00160\ \}\ \mbox{\hyperlink{struct_text}{Text}};}
+\DoxyCodeLine{00161\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{struct_vector2}{Vector2}}\ pnt;}
+\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{struct_size}{Size}}\ size;}
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{struct_color}{Color}}\ color;}
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{struct_color}{Color}}\ textColor;}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{int}\ length;}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{char}*\ str;}
+\DoxyCodeLine{00168\ \ \ \ \ void\ (*func)(int,\ \textcolor{keywordtype}{char}**);}
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{struct_font}{Font}}\ font;}
+\DoxyCodeLine{00170\ \}\ \mbox{\hyperlink{struct_button}{Button}};}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{bool}\ show;}
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{struct_rect}{Rect}}\ background;}
+\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{struct_rect}{Rect}}\ foreground;}
+\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{struct_rect}{Rect}}\ titleTextBackground;}
+\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{struct_text}{Text}}\ title;}
+\DoxyCodeLine{00178\ \ \ \ \ \mbox{\hyperlink{struct_text}{Text}}\ text;}
+\DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{struct_button}{Button}}\ xButton;}
+\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{struct_button}{Button}}\ buttons[3];}
+\DoxyCodeLine{00181\ \ \ \ \ void\ (*func)(int,\ \textcolor{keywordtype}{char}**);}
+\DoxyCodeLine{00182\ \}\ \mbox{\hyperlink{struct_message_box_rend}{MessageBoxRend}};}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00185\ \ \ \ \ \mbox{\hyperlink{struct_button}{Button}}\ button;}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{bool}\ checked;}
+\DoxyCodeLine{00187\ \}\ \mbox{\hyperlink{struct_checkbox}{Checkbox}};}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00190\ \ \ \ \ f32\ vertex[3];}
+\DoxyCodeLine{00191\ \ \ \ \ u32\ color;}
+\DoxyCodeLine{00192\ \ \ \ \ \mbox{\hyperlink{struct_vector2}{Vector2}}\ texturePos;}
+\DoxyCodeLine{00193\ \}\ \mbox{\hyperlink{struct_vertex}{Vertex}};}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{int}\ vertexCount;}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{bool}\ textured;}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{char}*\ textureFile;}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordtype}{int}\ textureSize;}
+\DoxyCodeLine{00200\ \ \ \ \ \mbox{\hyperlink{struct_vertex}{Vertex}}*\ vertex;}
+\DoxyCodeLine{00201\ \ \ \ \ \mbox{\hyperlink{struct_vector3}{Vector3}}\ position;}
+\DoxyCodeLine{00202\ \ \ \ \ \mbox{\hyperlink{struct_vector3}{Vector3}}\ rotation;}
+\DoxyCodeLine{00203\ \ \ \ \ \mbox{\hyperlink{struct_vector3}{Vector3}}\ scale;}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ GRRLIB\_texImg*\ texture;}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ GLuint\ texture;}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00210\ \}\ \mbox{\hyperlink{struct_mesh}{Mesh}};}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{int}\ meshCount;}
+\DoxyCodeLine{00214\ \ \ \ \ \mbox{\hyperlink{struct_mesh}{Mesh}}*\ mesh;}
+\DoxyCodeLine{00215\ \}\ \mbox{\hyperlink{struct_model}{Model}};}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \textcolor{comment}{//\ our\ object\ struct}}
+\DoxyCodeLine{00218\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00219\ \ \ \ \ \mbox{\hyperlink{struct_size}{Size}}\ size;}
+\DoxyCodeLine{00220\ \ \ \ \ \mbox{\hyperlink{struct_vector2}{Vector2}}\ pnt;}
+\DoxyCodeLine{00221\ \}\ \mbox{\hyperlink{struct_object}{Object}};}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_GCWII}}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#define\ wait(ms)\ usleep(ms\ *\ 1000)}}
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#ifdef\ CC\_BUILD\_WIN}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#define\ wait(ms)\ \_sleep(ms)}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_window}{Window}}\ win;}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \textcolor{keywordtype}{void}\ testGifLib();}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \mbox{\hyperlink{struct_raw_data}{RawData}}\ \mbox{\hyperlink{core_8c_a6d38b69a69f8d4415a55f04afcc3d515}{loadRawData}}(\textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00235\ \mbox{\hyperlink{struct_thread}{Thread}}\ \mbox{\hyperlink{core_8c_a9753f754f640c8f65959a6ff3ec854a0}{createThread}}(\textcolor{keywordtype}{void}*\ func,\ \textcolor{keywordtype}{void}*\ arg);}
+\DoxyCodeLine{00236\ \mbox{\hyperlink{struct_window}{Window}}\ \mbox{\hyperlink{core_8c_a64ef044d74c439f2cf8f692d348dfe9d}{init}}();}
+\DoxyCodeLine{00237\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_aaf30f1a427b8bffa96b66756e1af926b}{problem}}(\mbox{\hyperlink{struct_window}{Window}}\ win,\ \textcolor{keywordtype}{char}*\ txt,\ \textcolor{keywordtype}{bool}\ exiter);}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \textcolor{keywordtype}{void}\ go3dMode(f32\ minDistance,\ f32\ maxDistance,\ f32\ fov,\ \textcolor{keywordtype}{bool}\ textureMode);}
+\DoxyCodeLine{00240\ \textcolor{keywordtype}{void}\ go2dMode();}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \mbox{\hyperlink{struct_font}{Font}}\ \mbox{\hyperlink{core_8c_a254000923fedf29bf5ed677ce762f949}{initFont}}(\textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{int}\ size,\ \mbox{\hyperlink{struct_window}{Window}}\ win);}
+\DoxyCodeLine{00243\ \mbox{\hyperlink{struct_text}{Text}}\ \mbox{\hyperlink{core_8c_a4646869806700de48a63cfa46794d0b0}{initText}}(\textcolor{keywordtype}{char}*\ str,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ length,\ \mbox{\hyperlink{struct_color}{Color}}\ color,\ \mbox{\hyperlink{struct_font}{Font}}\ font);}
+\DoxyCodeLine{00244\ \mbox{\hyperlink{struct_text}{Text}}\ \mbox{\hyperlink{core_8c_ae5933f5eb2c51b096bf77f6499f0330d}{rePosText}}(\mbox{\hyperlink{struct_text}{Text}}\ cText,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00245\ \mbox{\hyperlink{struct_rect}{Rect}}\ \mbox{\hyperlink{core_8c_a3d8517c0511292474455e64999069923}{initRect}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \mbox{\hyperlink{struct_color}{Color}}\ color);}
+\DoxyCodeLine{00246\ \mbox{\hyperlink{struct_rect}{Rect}}\ \mbox{\hyperlink{core_8c_ae24f77b948ad108d372950166577dc38}{rePosRect}}(\mbox{\hyperlink{struct_rect}{Rect}}\ cRect,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00247\ \mbox{\hyperlink{struct_button}{Button}}\ \mbox{\hyperlink{core_8c_af343ed933810b47703ec99f8a88cbd0c}{createButton}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{char}*\ str,\ \mbox{\hyperlink{struct_color}{Color}}\ color,\ \mbox{\hyperlink{struct_color}{Color}}\ textColor,\ \mbox{\hyperlink{struct_font}{Font}}\ fnt,\ \textcolor{keywordtype}{void}*\ click);}
+\DoxyCodeLine{00248\ \mbox{\hyperlink{struct_button}{Button}}\ \mbox{\hyperlink{core_8c_a46e51a1a97133b622c519a2f2e4b9e6c}{rePosButton}}(\mbox{\hyperlink{struct_button}{Button}}\ cButton,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00249\ \mbox{\hyperlink{struct_message_box_rend}{MessageBoxRend}}\ \mbox{\hyperlink{core_8c_a363fc5faf02e44bd9b624715b8b123b1}{createMessageBox}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{char}*\ title,\ \textcolor{keywordtype}{char}*\ text,\ \mbox{\hyperlink{struct_color}{Color}}\ color,\ \mbox{\hyperlink{struct_color}{Color}}\ textColor,\ \mbox{\hyperlink{struct_font}{Font}}\ fnt,\ \textcolor{keywordtype}{void}*\ click);}
+\DoxyCodeLine{00250\ \mbox{\hyperlink{struct_message_box_rend}{MessageBoxRend}}\ \mbox{\hyperlink{core_8c_a052f06b968379e7018fb09a78e134717}{rePosMessageBox}}(\mbox{\hyperlink{struct_message_box_rend}{MessageBoxRend}}\ cmb,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00251\ \mbox{\hyperlink{struct_texture}{Texture}}\ \mbox{\hyperlink{core_8c_a0d2b4d8e5e613807efc3811869710186}{initTexture}}(\mbox{\hyperlink{struct_window}{Window}}\ win,\ \textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{float}\ rotation,\ \textcolor{keywordtype}{bool}\ rotateACent);}
+\DoxyCodeLine{00252\ \mbox{\hyperlink{struct_texture}{Texture}}\ \mbox{\hyperlink{core_8c_a561c06c78b85872932ef525c8e25cb55}{loadTexture}}(\mbox{\hyperlink{struct_window}{Window}}\ win,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ data,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{float}\ rotation,\ \textcolor{keywordtype}{bool}\ rotateACent);}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_a52910aaed2b1ae865852cc90fa4b93ed}{renderTexture}}(\mbox{\hyperlink{struct_texture}{Texture}}\ tex,\ \mbox{\hyperlink{struct_window}{Window}}\ win);}
+\DoxyCodeLine{00255\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_ac0d267fc6fbf8979c1512214c0168326}{renderText}}(\mbox{\hyperlink{struct_window}{Window}}\ window,\ \mbox{\hyperlink{struct_text}{Text}}\ text);}
+\DoxyCodeLine{00256\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_af1933685fa520954fb16f6272fbaef6f}{renderRect}}(\mbox{\hyperlink{struct_window}{Window}}\ window,\ \mbox{\hyperlink{struct_rect}{Rect}}\ rect);}
+\DoxyCodeLine{00257\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_a544acafb9d3b5ab6f6f55aa9394835ed}{renderButton}}(\mbox{\hyperlink{struct_window}{Window}}\ window,\ \mbox{\hyperlink{struct_button}{Button}}\ button);}
+\DoxyCodeLine{00258\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_a2aabbada4fa10c695c9d4fdf3e54b490}{renderMBox}}(\mbox{\hyperlink{struct_window}{Window}}\ window,\ \mbox{\hyperlink{struct_message_box_rend}{MessageBoxRend}}\ msgBox,\ \textcolor{keywordtype}{bool}\ mouseDown,\ \textcolor{keywordtype}{int}\ mouseX,\ \textcolor{keywordtype}{int}\ mouseY);}
+\DoxyCodeLine{00259\ \mbox{\hyperlink{struct_size}{Size}}\ \mbox{\hyperlink{core_8c_aca5519e5f3aa3f7ad92ae4815ea1b5b8}{getTextWidthTTF}}(\mbox{\hyperlink{struct_font}{Font}}\ font,\ \mbox{\hyperlink{struct_text}{Text}}\ text);}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_a913c690a548a3bde58d7061546355622}{simpleCollisionDetector}}(\mbox{\hyperlink{struct_object}{Object}}*\ sprite1,\ \mbox{\hyperlink{struct_object}{Object}}*\ sprite2,\ \textcolor{keywordtype}{int}\ *xHit,\ \textcolor{keywordtype}{int}\ *yHit);}
+\DoxyCodeLine{00262\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_a7476294c8c8e5c013b2d38b278c0cfc1}{collisionDetector}}(\mbox{\hyperlink{struct_object}{Object}}*\ obj1,\ \mbox{\hyperlink{struct_object}{Object}}*\ obj2,\ \textcolor{keywordtype}{int}\ *xHit,\ \textcolor{keywordtype}{int}\ *yHit);}
+\DoxyCodeLine{00263\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{core_8c_a6c6f41d235efeb46f40a2650aed7a430}{collisionDetectorBool}}(\mbox{\hyperlink{struct_object}{Object}}*\ obj1,\ \mbox{\hyperlink{struct_object}{Object}}*\ obj2);}
+\DoxyCodeLine{00264\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_ad3e7191f361e2feb6a4a235d2e305f89}{checkButtonClicked}}(\mbox{\hyperlink{struct_button}{Button}}\ button,\ \textcolor{keywordtype}{bool}\ mouseDown,\ \textcolor{keywordtype}{int}\ mouse\_x,\ \textcolor{keywordtype}{int}\ mouse\_y,\ \textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}**\ argv);}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_a6ff50275544a950c852f81399b0441d3}{updateWindow}}(\mbox{\hyperlink{struct_window}{Window}}\ win);}
+\DoxyCodeLine{00267\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_a3bd7fe87503874f23d5b9260eeaa0593}{clearScreen}}(\mbox{\hyperlink{struct_window}{Window}}\ window);}
+\DoxyCodeLine{00268\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_ad33f3c8c4e551a61d95cb53313f3c377}{setRenderColor}}(\mbox{\hyperlink{struct_window}{Window}}\ window,\ \mbox{\hyperlink{struct_color}{Color}}\ color);}
+\DoxyCodeLine{00269\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_a3a307acc9dd50e7ade80f025f63dda1f}{fillScreen}}(\mbox{\hyperlink{struct_window}{Window}}\ win,\ \mbox{\hyperlink{struct_color}{Color}}\ color);}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_a80f9e08da412bdfae07aa09847d6de96}{renderMesh}}(\mbox{\hyperlink{struct_window}{Window}}\ win,\ \mbox{\hyperlink{struct_mesh}{Mesh}}\ mesh);}
+\DoxyCodeLine{00272\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_a88a547c96c9ce3906c0cf22bdf504084}{renderModel}}(\mbox{\hyperlink{struct_window}{Window}}\ win,\ \mbox{\hyperlink{struct_model}{Model}}\ model);}
+\DoxyCodeLine{00273\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{core_8c_a7eeb95808eec2bc35ecadcde9884c3a2}{saveModel}}(\mbox{\hyperlink{struct_model}{Model}}\ model,\ \textcolor{keywordtype}{char}*\ file);}
+\DoxyCodeLine{00274\ \mbox{\hyperlink{struct_model}{Model}}\ \mbox{\hyperlink{core_8c_af55e9ed2b0807c2ae9f7ab01f11744b3}{loadModel}}(\textcolor{keywordtype}{char}*\ file);}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

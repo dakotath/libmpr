@@ -1,0 +1,35 @@
+# Compiler and flags
+CC := gcc -DCC_BUILD_WIN
+CFLAGS := -Wall -Wextra -std=c99
+LDFLAGS := -static -Llib/win/ -lopengl32 -lglu32 -lglew32s -lglew32 -lSDL2.dll -lSDL2_image.dll -lSDL2_mixer.dll -lSDL2_ttf.dll -lm -lsetupapi -lole32
+INCLUDE_DIRS := -Iinclude/
+
+# Directories
+SRC_DIR := source
+BUILD_DIR := build_win
+BIN_DIR := bin
+
+# Source files and object files
+SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES := $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC_FILES))
+
+# Final executable name
+EXECUTABLE := $(BIN_DIR)/multi_platform_rendering
+
+# Default target
+all: $(EXECUTABLE)
+
+# Rule to build the final executable
+$(EXECUTABLE): $(OBJ_FILES)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
+# Rule to build object files from source files
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) $(INCLUDE_DIRS) -c $< -o $@
+
+# Clean target
+clean:
+	rm -f $(OBJ_FILES) $(EXECUTABLE)
+
+# Phony targets to avoid conflicts with files of the same names
+.PHONY: all clean
