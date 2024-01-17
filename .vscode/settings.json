@@ -9,6 +9,11 @@
         "string.h": "c",
         "input.h": "c",
         "stdbool.h": "c",
-        "sound.h": "c"
+        "sound.h": "c",
+        "debug.h": "c",
+        "render.h": "c",
+        "rendertabs.h": "c",
+        "sam.h": "c",
+        "samtabs.h": "c"
     }
 }

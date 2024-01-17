@@ -61,10 +61,11 @@ lwp_queue mainQueue;
  * 
  * @return void
  */
-void enqueueBuffer(void* buf, long bufSize) {
+void enqueueBuffer(void* buf, long bufSize, uint32_t freq, uint8_t channels) {
     // Play the audio buffer
     ASND_StopVoice(1);
-    ASND_SetVoice(1, VOICE_MONO_16BIT_LE, 44100, 0, buf, bufSize, 255, 255, NULL);
+    ASND_ChangeVolumeVoice(1, 128,128);
+    ASND_SetVoice(1, VOICE_MONO_16BIT_LE, freq, 0, buf, bufSize, 255, 255, NULL);
     ASND_Pause(0);
 }
 
@@ -201,7 +202,7 @@ s16 *leBuf_to_beBuf(s16 *buf, long bufSize)
  * 
  * @return void
  */
-void playBuffer(void* buf, long bufSize)
+void playBuffer(void* buf, long bufSize, uint32_t freq, uint8_t channels)
 {
     #ifdef CC_BUILD_WIN
     // Pause the audio device to stop any currently playing audio
@@ -210,9 +211,9 @@ void playBuffer(void* buf, long bufSize)
     // Clear the audio buffer to remove any pending audio
     SDL_ClearQueuedAudio(1);
     SDL_AudioSpec spec;
-    spec.freq = 44100;
+    spec.freq = freq;
     spec.format = AUDIO_S16SYS;
-    spec.channels = 1;
+    spec.channels = channels;
     spec.samples = bufSize / 4;
     spec.callback = NULL;
     SDL_OpenAudio(&spec, NULL);
@@ -224,7 +225,7 @@ void playBuffer(void* buf, long bufSize)
     // since the Wii's PowerPC CPU is big endian, we need to convert the buffer to big endian
     //s16 *newBuf = leBuf_to_beBuf(buf, bufSize);
     //freeMemory(buf);
-    enqueueBuffer(buf, bufSize);
+    enqueueBuffer(buf, bufSize, freq, channels);
     //ASND_SetVoice(1, VOICE_MONO_16BIT, 44100, 0, newBuf, bufSize, 255, 255, NULL);
     //ASND_Pause(0);
     #endif

@@ -24,7 +24,7 @@ VERSION		:=	1.0.0
 #-------------------------------------------------------------------------------
 TARGET		:=	libmpr
 BUILD		:=	build
-SOURCES		:=	source
+SOURCES		:=	source source/SAM
 DATA		:=	data
 INCLUDES	:=	include
 

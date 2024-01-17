@@ -81,6 +81,11 @@ typedef struct {
 } Vector2;
 
 typedef struct {
+    float x;
+    float y;
+} Vector2f;
+
+typedef struct {
     int x;
     int y;
     int z;
@@ -132,6 +137,9 @@ typedef struct
     Vector2 pnt;
     Size size;
     Color color;
+
+    Vector2f velocity;    // New: Velocity of the rectangle
+    Vector2f acceleration; // New: Acceleration of the rectangle
 } Rect;
 
 typedef struct {

@@ -56,11 +56,11 @@
 
 #ifdef CC_BUILD_GCWII
 s16 *leBuf_to_beBuf(s16 *buf, long bufSize);
-void enqueueBuffer(void* buf, long bufSize);
+void enqueueBuffer(void* buf, long bufSize, uint32_t freq, uint8_t channels);
 void playNextAudioBuffer();
 void initAudioQueue();
 #endif
 
 void beep(double f, int t);
-void playBuffer(void* buf, long bufSize);
+void playBuffer(void* buf, long bufSize, uint32_t freq, uint8_t channels);
 void playOgg(const void *buffer, s32 len, int time_pos, int mode);

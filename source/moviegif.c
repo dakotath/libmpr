@@ -267,9 +267,9 @@ void MovieGif_TestPlayback(Window win, MovieGif_t movie)
     while (!checkKey(KEY_MENU)) {
         t0 = ticks_to_millisecs(gettime());
 
-        fillScreen(win, (Color){0xa8,0xa8,0xa8,0xff});
+        //fillScreen(win, (Color){0xa8,0xa8,0xa8,0xff});
         renderFrame(win, tex, movie.gifdata, scaleFact);
-        updateWindow(win);
+        //updateWindow(win);
 
         t1 = ticks_to_millisecs(gettime());
         delta = t1 - t0;
